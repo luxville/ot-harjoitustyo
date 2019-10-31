@@ -1,0 +1,114 @@
+commit 4d481ac491baff31fe13866faa8da1f7a69235b0
+Author: Ville Luostarinen <ville.luostarinen@helsinki.fi>
+Date:   Thu Oct 31 14:55:38 2019 +0200
+
+    file1 poistettu ja file 2 korvattu file22:lla
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit d6497054762ce3dbcb4564a568e3534ab33b13eb
+Author: Ville Luostarinen <ville.luostarinen@helsinki.fi>
+Date:   Thu Oct 31 14:46:41 2019 +0200
+
+    tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 2559d29da901311d1a813a859cd97c35bc9ede15
+Author: Ville Luostarinen <ville.luostarinen@helsinki.fi>
+Date:   Thu Oct 31 14:39:07 2019 +0200
+
+    ekaa ja kolmatta muokattu
+
+ eka.txt    | 7 ++++---
+ kolmas.txt | 3 ++-
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+commit 78035fdd2f92b2abef1d745fbf309dfb5478992d
+Author: Ville Luostarinen <ville.luostarinen@helsinki.fi>
+Date:   Thu Oct 31 14:36:43 2019 +0200
+
+    tiedosto ekaksi
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 8a9c570010a867db62793612d2eaebbbe2fc0a9f
+Author: Ville Luostarinen <ville.luostarinen@helsinki.fi>
+Date:   Thu Oct 31 14:35:49 2019 +0200
+
+    toinen poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 9204e61a89307e64b941d61374bae5c8630330c3
+Author: Ville Luostarinen <ville.luostarinen@helsinki.fi>
+Date:   Thu Oct 31 14:31:50 2019 +0200
+
+    turhaa pois
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a69a289a2dae0bd86487dfb947e26a9da10bd7f8
+Author: Ville Luostarinen <ville.luostarinen@helsinki.fi>
+Date:   Thu Oct 31 14:21:20 2019 +0200
+
+    tekstiä tiedostoon
+
+ tiedosto.txt | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
+
+commit c782e058cd501a1aff693b84303b7b335c7138ac
+Author: Ville Luostarinen <ville.luostarinen@helsinki.fi>
+Date:   Thu Oct 31 14:12:54 2019 +0200
+
+    juttuja lisätty
+
+ stuff/jotain.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 11b554968db01c479514fa5e0f9acdd1872f3c20
+Author: Ville Luostarinen <ville.luostarinen@helsinki.fi>
+Date:   Thu Oct 31 14:11:48 2019 +0200
+
+    toinen ja kolmas päivitetty
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 6e4795e42bb3671a765f391da952a2731cdd58ca
+Author: Ville Luostarinen <ville.luostarinen@helsinki.fi>
+Date:   Thu Oct 31 14:10:22 2019 +0200
+
+    kolmas tiedosto
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 0a5d8510988a1ec9f89118ba2b033574fb0b3fc1
+Author: Ville Luostarinen <ville.luostarinen@helsinki.fi>
+Date:   Thu Oct 31 14:06:56 2019 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 50315c9abd6c42be45f0bd7d0f2cf850d514fc2a
+Author: Ville Luostarinen <ville.luostarinen@helsinki.fi>
+Date:   Thu Oct 31 14:03:56 2019 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+

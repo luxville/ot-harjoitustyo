@@ -9,3 +9,5 @@
 [komentorivi.txt](laskarit/viikko1/komentorivi.txt)
 
 Muutos GitHubissa
+
+Päivitetään omalla koneella

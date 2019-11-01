@@ -1,4 +1,4 @@
-# Ohjelmistotekniikka, harjoitustyöö
+# Ohjelmistotekniikka, harjoitustyö
 
 ## Tehtävät
 

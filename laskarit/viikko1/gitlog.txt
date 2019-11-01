@@ -1,3 +1,5 @@
+Testattavana ristiriita
+
 commit 4d481ac491baff31fe13866faa8da1f7a69235b0
 Author: Ville Luostarinen <ville.luostarinen@helsinki.fi>
 Date:   Thu Oct 31 14:55:38 2019 +0200

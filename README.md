@@ -8,6 +8,7 @@
 
 [komentorivi.txt](laskarit/viikko1/komentorivi.txt)
 
-Muutos GitHubissa
 
-Päivitetään omalla koneella
+### Viikko 2
+
+[testikattavuus](laskarit/viikko2/testikattavuus.png)

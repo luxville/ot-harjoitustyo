@@ -1,5 +1,5 @@
 
-package tetris.window;
+package Tetris.window;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;

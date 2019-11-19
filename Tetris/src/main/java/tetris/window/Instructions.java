@@ -5,7 +5,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 
-public class HowToPlay extends Application {
+public class Instructions extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {

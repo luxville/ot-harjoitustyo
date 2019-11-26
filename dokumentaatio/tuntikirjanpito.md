@@ -10,5 +10,5 @@
 | 22.11. | 1    | Pientä säätöä |
 | 25.11. | 3    | Graafisen käyttöliittymän koodausta |
 | 26.11. | 5    | Graafinen käyttöliittymä pelin osalta toimintakuntoon |
-|        | 1    | checkstylen käyttöönotto ja ylimääräisten virheiden korjaus |
+|        | 2    | Arkkitehtuurikuvaus, checkstylen käyttöönotto ja ylimääräisten virheiden korjaus |
 | Yht.   | 22

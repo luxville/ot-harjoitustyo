@@ -12,5 +12,5 @@ Sovelluksessa käyttäjän tarkoituksena on järjestellä ruudun ylälaidasta pu
 
 ## Missä mennään
 
-Peliä varten on olemassa jo jonkin verran koodia, jota ei kuitenkaan vielä ole otettu käyttöön. Ohjelman suorittaminen onnistuu omalta viime vuoden fuksiläppäriltä komentoriviltä komennolla *mvn compile exec:java -Dexec.mainClass=Tetris.Main*, mutta NetBeans ei syystä tai toisesta suostunut koodia suorittamaan. Tällä hetkellä käytössä on hyvin yksinkertainen yhdestä näkymästä muodostuva graafinen käyttöliittymä, jonka ainoa käytössä oleva toiminto on pelin sulkeva "Lopeta"-nappi. Tästä on hyvä kuitenkin jatkaa, kunhan aikaa taas löytyy. 
+Ohjelman suorittaminen onnistuu Netbeansissa sekä myös komentoriviltä komennolla *mvn compile exec:java -Dexec.mainClass=tetrisgame.Main*. Tällä hetkellä käytössä on pelkästään pelitilasta muodostuva graafinen käyttöliittymä. Jotain on ilmeisesti mennyt hieman pieleen, sillä tetrominot "tippuvat" vasemmalta oikealle, mutta deadlinen lähestyessä en tätä enää lähtenyt korjaamaan. Testien osalta ei vielä olla oikeastaan edes alussa, mutta aikataulupaineesta johtuen jotain piti jättää tekemättä.
 

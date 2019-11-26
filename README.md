@@ -10,6 +10,8 @@ Sovelluksessa käyttäjän tarkoituksena on järjestellä ruudun ylälaidasta pu
 
 [Työaikakirjanpito](https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
+[Arkkitehtuurikuvaus](https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
 ## Missä mennään
 
 Ohjelman suorittaminen onnistuu Netbeansissa sekä myös komentoriviltä komennolla *mvn compile exec:java -Dexec.mainClass=tetrisgame.Main*. Tällä hetkellä käytössä on pelkästään pelitilasta muodostuva graafinen käyttöliittymä. Jotain on ilmeisesti mennyt hieman pieleen, sillä tetrominot "tippuvat" vasemmalta oikealle, mutta deadlinen lähestyessä en tätä enää lähtenyt korjaamaan. Testien osalta ei vielä olla oikeastaan edes alussa, mutta aikataulupaineesta johtuen jotain piti jättää tekemättä.

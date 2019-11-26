@@ -1,4 +1,4 @@
-package Tetris.domain;
+package tetris.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -199,15 +199,18 @@ public class Board {
                 }
                 if (mostBottomLine != HEIGHT - 1 && gravity) {
                     allPoints = getPoints();
-                    
+
                     for (int i = 0; i < WIDTH; i++) {
                         int numOfEmpty = 0;
-                        
+
                         for (int j = mostBottomLine + 1; j < HEIGHT; j++) {
-                            if (!allPoints.contains((new Point(i, j)))) numOfEmpty ++;
-                            else break;                            
+                            if (!allPoints.contains((new Point(i, j)))) {
+                                numOfEmpty++;
+                            } else {
+                                break;
+                            }
                         }
-                        
+
                         if (numOfEmpty != 0) {
                             gravityTriggered = false;
                             for (int j = 0; j < points.size(); j++) {
@@ -221,37 +224,41 @@ public class Board {
                 }
             }
         } while (gravityTriggered);
-    level = numClearedLines / 10;
-    updateSpeed();
+        level = numClearedLines / 10;
+        updateSpeed();
     }
 
     private int calculateCurrentScore(int num) {
         int base = 40;
-        
-        if (num == 2) base = 100;
-        else if (num == 3) base = 300;
-        else if (num == 4) base = 1000;
-        
+
+        if (num == 2) {
+            base = 100;
+        } else if (num == 3) {
+            base = 300;
+        } else if (num == 4) {
+            base = 1000;
+        }
+
         return base * (level + 1);
     }
-    
+
     public List<Point> getPoints() {
         List<Point> points = new ArrayList<Point>();
-        
+
         points.addAll(this.points);
         points.addAll(currentShape.getPoints());
-        
+
         Set<Point> set = new HashSet<Point>();
         set.addAll(points);
         points.clear();
         points.addAll(set);
-        
+
         return points;
     }
 
     private void updateSpeed() {
         double baseFrame = 48.0;
-        
+
         if (-1 < level && level < 9) {
             timePerBlock = (int) (((baseFrame - (level * 5.0)) / 60.0) * 1000.0);
         } else if (level == 9) {
@@ -260,12 +267,14 @@ public class Board {
             timePerBlock = (int) (((8.0 - (level - 1.0) / 3.0) / 60.0) * 1000.0);
         } else if (18 < level && level < 29) {
             timePerBlock = (int) ((2.0 / 60.0) * 1000.0);
-        } else timePerBlock = (int) ((1.0 / 60.0) * 1000.0);
+        } else {
+            timePerBlock = (int) ((1.0 / 60.0) * 1000.0);
+        }
     }
-    
+
     public void getStatus() {
         StringBuffer sb = new StringBuffer();
-        
+
         sb.append(toString());
         sb.append("--- Border ---\n");
         sb.append("Left " + closeToLeftBorder() + "\n");
@@ -277,54 +286,54 @@ public class Board {
         sb.append("Bottom " + hasPointsDown() + "\n");
         sb.append("--- Rotate ---\n");
         sb.append(canRotate());
-        
+
         System.out.println(sb.toString());
     }
-    
+
     public int getNumClearedLines() {
         return numClearedLines;
     }
-    
+
     public boolean getGravity() {
         return gravity;
     }
-    
+
     public void setGravity(boolean gravity) {
         this.gravity = gravity;
     }
-    
+
     public boolean getGameOver() {
         return gameOver;
     }
-    
+
     public int getLevel() {
         return level;
     }
-    
+
     public int getTimePerBlock() {
         return timePerBlock;
     }
-    
+
     public int getScore() {
         return score;
     }
-    
+
     @Override
     public String toString() {
         int[][] board = new int[HEIGHT][WIDTH];
         for (Point point : points) {
             board[point.getY()][point.getX()] = point.getType();
         }
-        
+
         for (Point point : currentShape.getPoints()) {
             board[point.getY()][point.getX()] = currentShape.getType();
         }
-        
-        String str ="";
+
+        String str = "";
         for (int[] is : board) {
             str += Arrays.toString(is) + "\n";
         }
-        
+
         return str;
     }
 }

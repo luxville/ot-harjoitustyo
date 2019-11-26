@@ -1,4 +1,4 @@
-package Tetris.domain;
+package tetris.domain;
 
 import java.util.ArrayList;
 import java.util.List;

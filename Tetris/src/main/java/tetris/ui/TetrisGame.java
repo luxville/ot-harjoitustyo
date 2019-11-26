@@ -1,8 +1,8 @@
 
-package Tetris.ui;
+package tetris.ui;
 
-import Tetris.domain.Board;
-import Tetris.domain.Point;
+import tetris.domain.Board;
+import tetris.domain.Point;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -109,20 +109,19 @@ public class TetrisGame extends Application {
                         topShade.setOpacity(0.5);
                         topShade.setFill(Color.WHITE);
                         topShade.getPoints().addAll(new Double[] {
-                            0.0, 0.0, (double) PIXEL, 0.0, (double) PIXEL - 
-                                shadeThick, shadeThick, shadeThick, 
-                                shadeThick, shadeThick, (double) PIXEL 
-                                - shadeThick, 0.0, (double) PIXEL
+                            0.0, 0.0, (double) PIXEL, 0.0, (double) PIXEL - shadeThick, 
+                            shadeThick, shadeThick, shadeThick, shadeThick, 
+                            (double) PIXEL - shadeThick, 0.0, (double) PIXEL
                         });
                         
                         bottomShade.setOpacity(0.5);
                         bottomShade.setFill(Color.BLACK);
                         bottomShade.getPoints().addAll(new Double[] {
                             0.0, (double) PIXEL, (double) PIXEL, (double) PIXEL,
-                                (double) PIXEL, 0.0, (double) PIXEL - shadeThick,
-                                shadeThick, (double) PIXEL - shadeThick, 
-                                (double) PIXEL - shadeThick, shadeThick, 
-                                (double) PIXEL - shadeThick
+                            (double) PIXEL, 0.0, (double) PIXEL - shadeThick,
+                            shadeThick, (double) PIXEL - shadeThick, 
+                            (double) PIXEL - shadeThick, shadeThick, 
+                            (double) PIXEL - shadeThick
                         });
                         
                         square.setFill(colors.get(colorChoice).get(points.get(points.indexOf(currentPoint)).getType()));
@@ -173,12 +172,12 @@ public class TetrisGame extends Application {
             setSceneDisable(true);
             shapeTransition.stop();
             
-            gameOverTitle = new Label("GAME OVER");
+            gameOverTitle = new Label("PELI LOPPUI");
             gameOverTitle.setTextFill(Color.WHITE);
             gameOverTitle.setFont(Font.font("Segoe UI", FontWeight.BOLD, 15.0));
             gameOverTitle.setTextAlignment(TextAlignment.CENTER);
             
-            gameOverSub = new Label("Sait " + board.getScore() + " pistettä\n "
+            gameOverSub = new Label("Pisteesi ovat " + board.getScore() + "\n "
                     + "ja saavutit tason " + board.getLevel() + "!");
             gameOverSub.setTextFill(Color.WHITE);
             gameOverSub.setFont(Font.font("Segoe UI Semilight", 13.0));

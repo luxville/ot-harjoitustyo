@@ -1,7 +1,7 @@
 
-package Tetris.ui;
+package tetris.ui;
 
-import Tetris.ui.TetrisGame;
+import tetris.ui.TetrisGame;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;

@@ -1,7 +1,7 @@
-package Tetris;
+package tetrisgame;
 
 
-import Tetris.ui.TetrisGame;
+import tetris.ui.TetrisGame;
 import javafx.application.Application;
 
 public class Main {

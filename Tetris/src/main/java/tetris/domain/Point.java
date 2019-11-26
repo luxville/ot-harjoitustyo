@@ -1,4 +1,4 @@
-package Tetris.domain;
+package tetris.domain;
 
 public class Point {
 
@@ -37,7 +37,7 @@ public class Point {
     public void modX(int mod) {
         x += mod;
     }
-    
+
     public void setY(int y) {
         this.y = y;
     }
@@ -49,13 +49,15 @@ public class Point {
     public void modY(int mod) {
         y += mod;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Point) return x == ((Point) obj).x && y == ((Point) obj).y;
+        if (obj instanceof Point) {
+            return x == ((Point) obj).x && y == ((Point) obj).y;
+        }
         return false;
     }
-    
+
     @Override
     public String toString() {
         return "Point X: " + x + " Y: " + y + " Type: " + type;

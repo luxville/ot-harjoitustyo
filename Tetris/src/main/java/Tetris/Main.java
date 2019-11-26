@@ -1,11 +1,11 @@
 package Tetris;
 
 
+import Tetris.ui.TetrisGame;
 import javafx.application.Application;
-import javafx.stage.Stage;
 
 public class Main {
     public static void main(String[] args) {
-        Application.launch(MenuPage.class);
+        Application.launch(TetrisGame.class);
     }
 }

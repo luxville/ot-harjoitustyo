@@ -1,6 +1,6 @@
 
 
-import Tetris.Tetromino;
+import Tetris.domain.Tetromino2;
 import static org.hamcrest.CoreMatchers.*;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -33,6 +33,6 @@ public class TetrominoTest {
 
     @Test
     public void create_I() {
-        assertThat(Tetromino.I, not(nullValue()));
+        assertThat(Tetromino2.I, not(nullValue()));
     }
 }

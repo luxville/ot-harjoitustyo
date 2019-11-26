@@ -1,11 +1,11 @@
 
-package Tetris;
+package Tetris.ui;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 
-public class TetrisGame extends Application {
+public class Instructions extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {

@@ -1,7 +1,9 @@
 
-package Tetris;
+package Tetris.ui;
 
+import Tetris.ui.TetrisGame;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,13 +20,13 @@ public class MenuPage extends Application {
     public void start(Stage stage) throws Exception {
         // Luodaan aloitussivun nappulat
         Label label = new Label("TETRIS - MENU");
-        Button newGameButton = new Button("Pelaa");
+        Button newGameButton = new Button("Uusi peli");
         Button instructionsButton = new Button("Ohjeet");
         Button exitGameButton = new Button("Lopeta");
         
         // Sijoitetaan nappulat aloitussivulle
         GridPane menuGrid = new GridPane();
-        menuGrid.setPrefSize(300, 480);
+        menuGrid.setPrefSize(600, 800);
         menuGrid.add(label, 0, 0);
         menuGrid.add(newGameButton, 0, 1);
         menuGrid.add(instructionsButton, 0, 2);
@@ -35,6 +37,11 @@ public class MenuPage extends Application {
         menuGrid.setPadding(new Insets(20, 20, 20, 20));
         
         Scene menuScene = new Scene(menuGrid);
+        stage.setTitle("TETRIS");
+        
+        newGameButton.setOnAction((ActionEvent event) -> {
+            TetrisGame.start(stage);
+        });
         
         exitGameButton.setOnAction((event) -> {
             System.exit(0);

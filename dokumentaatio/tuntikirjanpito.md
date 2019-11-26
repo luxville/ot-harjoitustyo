@@ -4,9 +4,11 @@
 | :-----:|:-----| :---------|
 | 08.11. | 2    | Harjoitustyön aloitus, vaatimusmäärittely |
 | 18.11. | 2    | JavaFX:n kertaus |
-| 18.11. | 1    | Graafisen käyttöliittymän rungon kehittelyä |
+|        | 1    | Graafisen käyttöliittymän rungon kehittelyä |
 | 19.11. | 5    | Koodin kasailua |
-| 19.11. | 2    | Säätöä testien ja suorituskelpoisen ohjelman aikaansaamiseksi |
+|        | 2    | Säätöä testien ja suorituskelpoisen ohjelman aikaansaamiseksi |
 | 22.11. | 1    | Pientä säätöä |
-| 25.11. |
-| Yht.   | 13
+| 25.11. | 3    | Graafisen käyttöliittymän koodausta |
+| 26.11. | 5    | Graafinen käyttöliittymä pelin osalta toimintakuntoon |
+|        | 1    | checkstylen käyttöönotto ja ylimääräisten virheiden korjaus |
+| Yht.   | 22

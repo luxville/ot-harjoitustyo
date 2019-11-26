@@ -8,7 +8,7 @@ Suomenkielisen Wikipedian mukaan *"Tetriksessä on tarkoitus kerätä pisteitä 
 
 ## Käyttäjät
 
-Aluksi sovellus on tarkoitus saada toimimaan ilman käyttäjäksi kirjautumista, jolloin pelaaminen onnistuu ja parhaiden tulosten listalle päästessään sinne voi jättää nimensä. Myöhemmässä vaiheessa mahdollisesti käyttäjät voivat kirjautua sovellukseen ja nähdä jotain tilastoja omasta pelaamisestaan.
+Aluksi sovellus on tarkoitus saada toimimaan ilman käyttäjäksi kirjautumista (*tehty*), jolloin pelaaminen onnistuu ja parhaiden tulosten listalle päästessään sinne voi jättää nimensä. Myöhemmässä vaiheessa mahdollisesti käyttäjät voivat kirjautua sovellukseen ja nähdä jotain tilastoja omasta pelaamisestaan.
 
 ## Käyttöliittymäluonnos
 
@@ -16,7 +16,7 @@ Sovellus koostuu kolmesta eri näkymästä.
 
 Aloitusnäkymässä on valikko, josta voi aloittaa uuden pelin, tutustua peliohjeisiin tai sulkea sovelluksen. Lisäksi aloitussivulla näkyy tuloslista parhaista tuloksista.
 
-Pelinäkymässä pelataan ja pelin päätyttyä pelaajalta kysytään nimi, jos hänen tuloksensa oikeuttaa parhaiden tulosten listalle. Tämän jälkeen palataan aloitusnäkymään.
+Pelinäkymässä pelataan (*tehty*) ja pelin päätyttyä pelaajalta kysytään nimi, jos hänen tuloksensa oikeuttaa parhaiden tulosten listalle. Tämän jälkeen palataan aloitusnäkymään.
 
 Peliohjenäkymässä kerrotaan Tetriksen säännöt lyhyesti, käytettävät näppäimet ja niiden toiminnot.
 

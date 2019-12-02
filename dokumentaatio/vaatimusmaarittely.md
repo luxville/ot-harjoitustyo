@@ -8,7 +8,7 @@ Suomenkielisen Wikipedian mukaan *"Tetriksessä on tarkoitus kerätä pisteitä 
 
 ## Käyttäjät
 
-Aluksi sovelluksesta on tarkoitus saada aikaiseksi versio, jolla pelaaminen onnistuu (*tehty*) ja parhaiden tulosten listalle päästessään sinne voi jättää nimensä. 
+Sovelluksesta on tarkoitus saada aikaiseksi versio, jolla pelaaminen onnistuu (*tehty*) ja parhaiden tulosten listalle päästessään sinne voi jättää nimensä. Erillisten käyttäjäprofiilien toteuttaminen ei ole tämänkaltaisessa pelissä mielekästä.
 
 ## Käyttöliittymäluonnos
 

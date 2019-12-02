@@ -38,11 +38,7 @@ public class MenuPage extends Application {
         
         Scene menuScene = new Scene(menuGrid);
         stage.setTitle("TETRIS");
-        
-        newGameButton.setOnAction((ActionEvent event) -> {
-            TetrisGame.start(stage);
-        });
-        
+                
         exitGameButton.setOnAction((event) -> {
             System.exit(0);
         });

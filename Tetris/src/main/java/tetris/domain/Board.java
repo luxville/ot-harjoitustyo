@@ -116,7 +116,8 @@ public class Board {
         List<Point> rotated = currentShape.getRotatePoints();
 
         for (Point point : rotated) {
-            if (point.getX() >= WIDTH || point.getY() >= HEIGHT || point.getX() < 0 || points.contains(point)) {
+            if (point.getX() >= WIDTH || point.getY() >= HEIGHT || point.getX() < 0 
+                    || points.contains(point)) {
                 return false;
             }
         }

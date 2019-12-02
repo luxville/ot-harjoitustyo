@@ -73,10 +73,10 @@ public class Shape {
     }
 
     public void rotate() {
-        int lowX = 100;
-        int lowY = 100;
-
         if (type != 7) {
+            int lowX = 100;
+            int lowY = 100;
+            
             for (Point point : points) {
                 if (point.getX() < lowX) {
                     lowX = point.getX();

@@ -11,4 +11,6 @@
 | 25.11. | 3    | Graafisen käyttöliittymän koodausta |
 | 26.11. | 5    | Graafinen käyttöliittymä pelin osalta toimintakuntoon |
 |        | 2    | Arkkitehtuurikuvaus, checkstylen käyttöönotto ja ylimääräisten virheiden korjaus |
-| Yht.   | 22
+| 29.11. | 4    | Virheiden paikantamista ja korjausta |
+| 02.12. | 6    | Valikon toiminnot kuntoon. Koodin yleistä viilausta ja tarvittavaa tiedonhakua |
+| Yht.   | 32

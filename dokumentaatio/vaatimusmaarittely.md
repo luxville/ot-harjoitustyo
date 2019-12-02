@@ -12,7 +12,7 @@ Sovelluksesta on tarkoitus saada aikaiseksi versio, jolla pelaaminen onnistuu (*
 
 ## Käyttöliittymäluonnos
 
-Sovellus koostuu neljästä eri näkymästä. (*tehty*)
+Sovellus koostuu neljästä eri näkymästä, joita ovat valikko, pelitila, ohjeet ja parhaat tulokset. (*tehty*)
 
 Aloitusnäkymässä on valikko, josta voi aloittaa uuden pelin (*tehty*), katsoa parhaat tulokset (*nappi vie sivulle, jolle on tarkoitus toteuttaa parhaiden tulosten lista*), tutustua peliohjeisiin (*tehty*) tai sulkea sovelluksen (*tehty*). Peli voidaan milloin tahansa keskeyttää ja siitä päästä takaisin valikkoon, valikosta pääsee myös jatkamaan kesken olevaa peliä, vaikka kävisikin välillä tutustumassa ohjeisiin tai parhaisiin tuloksiin. (*tehty*) Käytännössä aloitussivu on sama kuin pelin keskeytyssivu. (*tehty*)
 

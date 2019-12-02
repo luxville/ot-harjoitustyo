@@ -2,30 +2,30 @@
 
 ## Sovelluksen tarkoitus
 
-Tarkoituksena on tehdä vielä yksi maailmaa tuskin kovin paljoa järisyttävä toteutus legendaarisen palikkapelistä. Perustoimintona on varsinainen peli, mikäli aika riittää olisi tarkoituksena tarjota kirjautuneelle käyttäjälle myös tilastoja omasta pelihistoriastaan.
+Tarkoituksena on tehdä vielä yksi maailmaa tuskin kovin paljoa järisyttävä toteutus legendaarisen palikkapelistä. Perustoimintona on varsinainen peli ja tallennettava parhaiden tulosten lista, mikäli aika riittää olisi tarkoituksena tarjota mahdollisuus muokata pelikokemusta ainakin vetovoiman osalta. Vetovoimalla tarkoitan tässä yhteydessä sitä, vaikuttaako rivin täyteen saaminen sen yläpuolella olevien palikoiden asemaan muuten kuin poistamalla ainoastaan valmiiksi tulleen rivin. Tämänhetkisessä toteutuksessa ruudut putoavat sarakkeittain niin alas kuin niillä on tilaa aina kun jokin välittömästi niiden alapuolella ollut ruutu poistuu välistä rivin täyttymisen yhteydessä.
 
 Suomenkielisen Wikipedian mukaan *"Tetriksessä on tarkoitus kerätä pisteitä pudottelemalla neljästä laatikosta koostuvia palikoita (tetrominoja, joita on seitsemän erilaista) ja koota niistä vaakasuoria rivejä. Kun rivin saa kokonaiseksi, se poistetaan ja ylempänä olevat rivit putoavat yhden alemmaksi. Täyttämällä kaksi tai kolme riviä kerralla saa enemmän pisteitä. Tämä toimenpide neljälle riville samanaikaisesti on nimeltään tetris."* (Viitattu 08.11.2019.)
 
 ## Käyttäjät
 
-Aluksi sovellus on tarkoitus saada toimimaan ilman käyttäjäksi kirjautumista (*tehty*), jolloin pelaaminen onnistuu ja parhaiden tulosten listalle päästessään sinne voi jättää nimensä. Myöhemmässä vaiheessa mahdollisesti käyttäjät voivat kirjautua sovellukseen ja nähdä jotain tilastoja omasta pelaamisestaan.
+Aluksi sovelluksesta on tarkoitus saada aikaiseksi versio, jolla pelaaminen onnistuu (*tehty*) ja parhaiden tulosten listalle päästessään sinne voi jättää nimensä. 
 
 ## Käyttöliittymäluonnos
 
-Sovellus koostuu kolmesta eri näkymästä.
+Sovellus koostuu neljästä eri näkymästä. (*tehty*)
 
-Aloitusnäkymässä on valikko, josta voi aloittaa uuden pelin, tutustua peliohjeisiin tai sulkea sovelluksen. Lisäksi aloitussivulla näkyy tuloslista parhaista tuloksista.
+Aloitusnäkymässä on valikko, josta voi aloittaa uuden pelin (*tehty*), katsoa parhaat tulokset (*nappi vie sivulle, jolle on tarkoitus toteuttaa parhaiden tulosten lista*), tutustua peliohjeisiin (*tehty*) tai sulkea sovelluksen (*tehty*). Käytännössä aloitussivu on sama kuin pelin keskeytyssivu (*tehty*).
 
 Pelinäkymässä pelataan (*tehty*) ja pelin päätyttyä pelaajalta kysytään nimi, jos hänen tuloksensa oikeuttaa parhaiden tulosten listalle. Tämän jälkeen palataan aloitusnäkymään.
 
-Peliohjenäkymässä kerrotaan Tetriksen säännöt lyhyesti, käytettävät näppäimet ja niiden toiminnot.
+Peliohjenäkymässä kerrotaan Tetriksen säännöt lyhyesti, käytettävät näppäimet ja niiden toiminnot. (*tehty*)
 
 ## Jatkokehitysideoita
 
 Perustoiminnallisuuksien toteuttamisen jälkeen järjestelmää kehitetään mahdollisesti esimerkiksi seuraavilla lisätoiminnallisuuksilla:
 
-- käyttäjätunnuksen luominen ja kirjautumistoiminnallisuus
-- kirjautuneena käyttäjänä enemmän tilastoja, kuten omien parhaiden tulosten lista ja kaikki pudotetut rivit yhteensä
+- vetovoiman toteuttaminen siten, että rivin täyteen saaminen pudottaa yläpuolella olevia palikoita vain pudonneiden rivien verran. 
+- seuraavana tulevan palikan näyttäminen.
 - esimerkiksi toinen leveyden ja korkeuden osalta poikkeava kenttää, jolla on oma tulostaulunsa.
 - mahdollisuus aloittaa peli tilanteesta, jossa kentän pohjalla on jo jonkin verran hajanaisesti sijoitettuja palasia, jotka voi poistaa saamalla rivit täyteen tippuvilla palikoilla.
 

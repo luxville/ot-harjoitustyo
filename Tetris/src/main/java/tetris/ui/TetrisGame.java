@@ -423,11 +423,6 @@ public class TetrisGame extends Application {
         setSceneDisable(!running);
     }
 
-//    @Override
-//    public void init() {
-//        startNewGame();
-//        pauseGame();
-//    }
     private VBox instructions() {
 
         VBox vBox = new VBox();

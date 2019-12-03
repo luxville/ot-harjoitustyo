@@ -1,3 +1,4 @@
+package tetris.domain;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -7,9 +8,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-public class BoardTest {
+public class PointTest {
     
-    public BoardTest() {
+    public PointTest() {
     }
     
     @BeforeClass

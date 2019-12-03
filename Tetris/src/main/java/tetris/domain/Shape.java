@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Shape {
 
-    private int type;
-    private int rotation;
-    private List<Point> points;
+    public int type;
+    public int rotation;
+    public List<Point> points;
 
     public Shape(int num) {
         this.type = num;

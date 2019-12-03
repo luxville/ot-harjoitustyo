@@ -13,4 +13,7 @@
 |        | 2    | Arkkitehtuurikuvaus, checkstylen käyttöönotto ja ylimääräisten virheiden korjaus |
 | 29.11. | 4    | Virheiden paikantamista ja korjausta |
 | 02.12. | 6    | Valikon toiminnot kuntoon. Koodin yleistä viilausta ja tarvittavaa tiedonhakua |
-| Yht.   | 32
+| 03.12. | 3    | jar-tiedoston ja releasen luominen, checkstyle-viilauksia ja sekvenssikaavio |
+|        | 1    | Koodin viilailua sieltä sun täältä |
+|        | 3    | Testien kanssa hikoilua |
+| Yht.   | 40

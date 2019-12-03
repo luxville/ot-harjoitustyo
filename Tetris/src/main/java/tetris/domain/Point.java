@@ -2,9 +2,9 @@ package tetris.domain;
 
 public class Point {
 
-    private int x;
-    private int y;
-    private int type;
+    public int x;
+    public int y;
+    public int type;
 
     public Point(int x, int y) {
         this.x = x;

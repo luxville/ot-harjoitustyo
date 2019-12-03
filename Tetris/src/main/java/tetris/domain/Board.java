@@ -10,15 +10,15 @@ import java.util.function.Predicate;
 
 public class Board {
 
-    private boolean gameOver;
-    private boolean gravity;
-    private int numClearedLines;
-    private int level;
-    private int score;
-    private int timePerBlock;
-    private List<Point> points;
-    private Random rand;
-    private Shape currentShape;
+    public boolean gameOver;
+    public boolean gravity;
+    public int numClearedLines;
+    public int level;
+    public int score;
+    public int timePerBlock;
+    public List<Point> points;
+    public Random rand;
+    public Shape currentShape;
     public static final int WIDTH = 10;
     public static final int HEIGHT = 22;
 

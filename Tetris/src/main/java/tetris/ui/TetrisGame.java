@@ -230,8 +230,8 @@ public class TetrisGame extends Application {
         colors.put(1, color2);
 
         tetrisGrid = new GridPane();
-        tetrisGrid.getStyleClass().add("grid");
-        tetrisGrid.getStyleClass().add("background");
+        //tetrisGrid.getStyleClass().add("grid");
+        //tetrisGrid.getStyleClass().add("background");
 
         for (int i = 0; i < Board.WIDTH; i++) {
             tetrisGrid.getColumnConstraints().add(new ColumnConstraints(PIXEL));
@@ -242,35 +242,35 @@ public class TetrisGame extends Application {
         }
 
         vBoxBottom = new VBox();
-        vBoxBottom.getStyleClass().add("background");
+        //vBoxBottom.getStyleClass().add("background");
 
         score = new Label();
         level = new Label();
         line = new Label();
 
-        score.getStyleClass().add("score");
-        level.getStyleClass().add("score");
-        line.getStyleClass().add("score");
+        //score.getStyleClass().add("score");
+        //level.getStyleClass().add("score");
+        //line.getStyleClass().add("score");
 
         subScore = new Label("pisteet");
         subLevel = new Label("taso");
         subLine = new Label("tuhotut rivit");
 
-        subScore.getStyleClass().add("subScore");
-        subLevel.getStyleClass().add("subScore");
-        subLine.getStyleClass().add("subScore");
+        //subScore.getStyleClass().add("subScore");
+        //subLevel.getStyleClass().add("subScore");
+        //subLine.getStyleClass().add("subScore");
 
         vBoxTop = new VBox();
-        vBoxTop.getStyleClass().add("background");
+        //vBoxTop.getStyleClass().add("background");
         vBoxTop.getChildren().addAll(score, subScore, level, subLevel, line, subLine);
 
         spacePause = new Label("keskeytä painamalla välilyöntiä");
-        spacePause.getStyleClass().add("pause");
+        //spacePause.getStyleClass().add("pause");
 
         vBoxBottom.getChildren().add(spacePause);
 
         borderPane = new BorderPane();
-        borderPane.getStyleClass().add("background");
+        //borderPane.getStyleClass().add("background");
         borderPane.setTop(vBoxTop);
         borderPane.setBottom(vBoxBottom);
 
@@ -278,7 +278,7 @@ public class TetrisGame extends Application {
         stackPane.getChildren().add(tetrisGrid);
 
         root = new HBox();
-        root.getStyleClass().add("background");
+        //root.getStyleClass().add("background");
         root.setPadding(new Insets(5.0));
         root.setSpacing(25.0);
         root.getChildren().addAll(borderPane, stackPane);
@@ -338,7 +338,7 @@ public class TetrisGame extends Application {
         boardShade.toFront();
 
         scene = new Scene(root);
-        scene.getStylesheets().add("file:resurssit/application.css");
+        //scene.getStylesheets().add("file:resurssit/application.css");
         scene.setOnKeyPressed((key) -> {
             if (running) {
                 if (key.getCode().equals(KeyCode.LEFT) || key.getCode().equals(KeyCode.A)) {

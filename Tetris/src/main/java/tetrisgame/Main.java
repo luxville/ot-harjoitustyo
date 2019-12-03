@@ -2,7 +2,6 @@ package tetrisgame;
 
 
 import tetris.ui.TetrisGame;
-import tetris.ui.MenuPage;
 import javafx.application.Application;
 
 public class Main {

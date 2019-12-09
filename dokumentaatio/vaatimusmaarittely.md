@@ -8,17 +8,17 @@ Suomenkielisen Wikipedian mukaan *"Tetriksessä on tarkoitus kerätä pisteitä 
 
 ## Käyttäjät
 
-Sovelluksesta on tarkoitus saada aikaiseksi versio, jolla pelaaminen onnistuu (*tehty*) ja parhaiden tulosten listalle päästessään sinne voi jättää nimensä. Erillisten käyttäjäprofiilien toteuttaminen ei ole tämänkaltaisessa pelissä mielekästä.
+Sovelluksesta on tarkoitus saada aikaiseksi versio, jolla pelaaminen onnistuu ja parhaiden tulosten listalle päästessään sinne voi jättää nimensä. Erillisten käyttäjäprofiilien toteuttaminen ei ole tämänkaltaisessa pelissä mielekästä.
 
 ## Käyttöliittymäluonnos
 
-Sovellus koostuu neljästä eri näkymästä, joita ovat valikko, pelitila, ohjeet ja parhaat tulokset. (*tehty*)
+Sovellus koostuu neljästä eri näkymästä, joita ovat valikko, pelitila, ohjeet ja parhaat tulokset.
 
-Aloitusnäkymässä on valikko, josta voi aloittaa uuden pelin (*tehty*), katsoa parhaat tulokset (*nappi vie sivulle, jolle on tarkoitus toteuttaa parhaiden tulosten lista*), tutustua peliohjeisiin (*tehty*) tai sulkea sovelluksen (*tehty*). Peli voidaan milloin tahansa keskeyttää ja siitä päästä takaisin valikkoon, valikosta pääsee myös jatkamaan kesken olevaa peliä, vaikka kävisikin välillä tutustumassa ohjeisiin tai parhaisiin tuloksiin. (*tehty*) Käytännössä aloitussivu on sama kuin pelin keskeytyssivu. (*tehty*)
+Aloitusnäkymässä on valikko, josta voi aloittaa uuden pelin, katsoa parhaat tulokset (*nappi vie sivulle, jolle on tarkoitus toteuttaa parhaiden tulosten lista*), tutustua peliohjeisiin tai sulkea sovelluksen. Peli voidaan milloin tahansa keskeyttää ja siitä päästä takaisin valikkoon, valikosta pääsee myös jatkamaan kesken olevaa peliä, vaikka kävisikin välillä tutustumassa ohjeisiin tai parhaisiin tuloksiin. Käytännössä aloitussivu on sama kuin pelin keskeytyssivu.
 
-Pelinäkymässä pelataan (*tehty*) ja pelin päätyttyä pelaajalta kysytään nimi, jos hänen tuloksensa oikeuttaa parhaiden tulosten listalle. Tämän jälkeen palataan aloitusnäkymään. Peli kerää tiedot pudotetuista riveistä ja kokonaispistemäärästä. (*tehty*)
+Pelinäkymässä pelataan ja pelin päätyttyä pelaajalta kysytään nimi, jos hänen tuloksensa oikeuttaa parhaiden tulosten listalle. Tämän jälkeen palataan aloitusnäkymään. Peli kerää tiedot pudotetuista riveistä ja kokonaispistemäärästä.
 
-Peliohjenäkymässä kerrotaan Tetriksen säännöt lyhyesti, käytettävät näppäimet ja niiden toiminnot. (*tehty*)
+Peliohjenäkymässä kerrotaan Tetriksen säännöt lyhyesti, käytettävät näppäimet ja niiden toiminnot.
 
 ## Jatkokehitysideoita
 

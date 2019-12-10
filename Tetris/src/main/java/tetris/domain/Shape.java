@@ -3,6 +3,9 @@ package tetris.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Luokassa luodaan tetrominot eli palikat ja niiden tarvitsemat metodit
+ */
 public class Shape {
 
     public int type;
@@ -26,6 +29,10 @@ public class Shape {
         }
     }
 
+    /**
+     * Metodissa luodaan palikat sijoittamalla niiden tyypin mukaan ruutuja
+     * pelialueen ylälaitaan.
+     */
     private void createPoints() {
         if (type != 7 && type != 4 && type != 3 && type != 1) {
             this.points.add(new Point(3, 0, type));
@@ -54,24 +61,37 @@ public class Shape {
         }
     }
 
+    /**
+     * Metodissa palikkaa siirretään alaspäin.
+     */
     public void moveDown() {
         for (Point point : points) {
             point.modY(1);
         }
     }
 
+    /**
+     * Metodissa palikkaa siirretään vasemmalle.
+     */
     public void moveLeft() {
         for (Point point : points) {
             point.modX(-1);
         }
     }
 
+    /**
+     * Metodissa palikkaa siirretään oikealle.
+     */
     public void moveRight() {
         for (Point point : points) {
             point.modX(1);
         }
     }
 
+    /**
+     * Metodissa palikan pisteille lasketaan sen tyypin perusteella
+     * kulloinkin oikea seuraava tila.
+     */
     public void rotate() {
         if (type != 7) {
             int lowX = 100;
@@ -111,6 +131,11 @@ public class Shape {
         rotation = (rotation + 1) % 4;
     }
     
+    /**
+     * Metodissa vuorossa olevaa palikkaa käännetään.
+     * 
+     * @return  lista palikan pisteistä sen kääntämisen jälkeen
+     */
     public List<Point> getRotatePoints() {
         Shape rotated = new Shape(this);
         
@@ -126,6 +151,11 @@ public class Shape {
         return points;
     }
     
+    /**
+     * Metodissa luodaan merkkijono kaikkien palikan pisteiden koordinaateista.
+     * 
+     * @return  merkkijono, jossa on kaikkien palikan pisteiden koordinaatit
+     */
     @Override
     public String toString() {
         String str = "";

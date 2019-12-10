@@ -1,5 +1,9 @@
 package tetris.domain;
 
+/**
+ * Luokka määrittelee pisteet, joista palikat muodostuvat, sekä niihin liittyvät
+ * toiminnot.
+ */
 public class Point {
 
     public int x;
@@ -34,6 +38,11 @@ public class Point {
         return x;
     }
 
+    /**
+     * Metodissa muutetaan pisteen x-koordinaattia.
+     *
+     * @param mod kertoo uuden x-koordinaatin suhteessa nykyiseen
+     */
     public void modX(int mod) {
         x += mod;
     }
@@ -46,10 +55,25 @@ public class Point {
         return y;
     }
 
+    /**
+     * Metodissa muutetaan pisteen y-koordinaattia.
+     *
+     * @param mod kertoo uuden y-koordinaatin suhteessa nykyiseen
+     */
     public void modY(int mod) {
         y += mod;
     }
 
+    /**
+     * Metodissa tarkistetaan, onko parametrina saatu olio Point-tyyppinen. Jos 
+     * näin on, tarkistetaan onko parametrina saatu Point-olio sama piste kuin
+     * tarkasteltavana oleva.
+     * 
+     * @param obj   olio, jota epäillään Point-olioksi
+     * 
+     * @return      totuusarvo siitä, ovatko parametrina saatu oli ja 
+     * tarkasteltavana oleva piste samoja
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Point) {
@@ -58,6 +82,11 @@ public class Point {
         return false;
     }
 
+    /**
+     * Metodi palauttaa tarkasteltavan Point-olion koordinaatit ja tyypin.
+     * 
+     * @return merkkijono, jossa ovat pisteen x- ja y-koordinaatit sekä tyyppi
+     */
     @Override
     public String toString() {
         return "Point X: " + x + " Y: " + y + " Type: " + type;

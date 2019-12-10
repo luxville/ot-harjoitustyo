@@ -1,6 +1,7 @@
 package tetris.ui;
 
 import tetris.domain.Board;
+import tetris.domain.HighScore;
 import tetris.domain.Point;
 import java.util.HashMap;
 import java.util.List;
@@ -34,13 +35,15 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javax.swing.JOptionPane;
 
 public class TetrisGame extends Application {
 
     private Arc halfCircle;
     private Board board;
-    private boolean firstTry = true;
+    private boolean firstTry;
     private boolean gameOver;
+    private boolean highScore;
     private boolean running;
     private BorderPane borderPane;
     private BorderPane gameOverCenter;
@@ -181,8 +184,9 @@ public class TetrisGame extends Application {
             gameOverTitle.setFont(Font.font("Segoe UI", FontWeight.BOLD, 15.0));
             gameOverTitle.setTextAlignment(TextAlignment.CENTER);
 
-            gameOverSub = new Label("Pisteesi ovat " + board.getScore() + "\n "
-                    + "ja saavutit tason " + board.getLevel() + "!");
+            gameOverSub = new Label("Pisteesi ovat " + board.getScore() + ",\n"
+                    + "saavutit tason " + board.getLevel() + "\n"
+                    + "tuhoamalla " + board.getNumClearedLines() + " riviä!");
             gameOverSub.setTextFill(Color.WHITE);
             gameOverSub.setFont(Font.font("Segoe UI Semilight", 13.0));
             gameOverSub.setTextAlignment(TextAlignment.CENTER);
@@ -191,7 +195,7 @@ public class TetrisGame extends Application {
             backToMenu.setOnAction((event) -> {
                 stackPane.getChildren().remove(gameOverCenter);
                 stackPane.getChildren().add(pauseCenter);
-            });            
+            });
 
             vBoxGameOver = new VBox();
             vBoxGameOver.getChildren().addAll(gameOverTitle, gameOverSub, backToMenu);
@@ -201,6 +205,7 @@ public class TetrisGame extends Application {
             gameOverCenter.setCenter(vBoxGameOver);
 
             stackPane.getChildren().addAll(boardShade, gameOverCenter);
+            updateHighScores();
         }
     }
 
@@ -251,7 +256,6 @@ public class TetrisGame extends Application {
         //score.getStyleClass().add("score");
         //level.getStyleClass().add("score");
         //line.getStyleClass().add("score");
-
         subScore = new Label("pisteet");
         subLevel = new Label("taso");
         subLine = new Label("tuhotut rivit");
@@ -259,7 +263,6 @@ public class TetrisGame extends Application {
         //subScore.getStyleClass().add("subScore");
         //subLevel.getStyleClass().add("subScore");
         //subLine.getStyleClass().add("subScore");
-
         vBoxTop = new VBox();
         //vBoxTop.getStyleClass().add("background");
         vBoxTop.getChildren().addAll(score, subScore, level, subLevel, line, subLine);
@@ -293,9 +296,6 @@ public class TetrisGame extends Application {
         Button exitGameButton = new Button("Lopeta Tetris");
 
         continueButton.setOnAction((event) -> {
-            if (gameOver) {
-                pauseGame();
-            }
             running = true;
             shapeTransition.play();
             stackPane.getChildren().removeAll(boardShade, pauseCenter);
@@ -303,6 +303,7 @@ public class TetrisGame extends Application {
 
         newGameButton.setOnAction((event) -> {
             startNewGame();
+            // = true;
             shapeTransition.play();
             stackPane.getChildren().removeAll(boardShade, pauseCenter);
         });
@@ -343,22 +344,22 @@ public class TetrisGame extends Application {
             if (running) {
                 if (key.getCode().equals(KeyCode.LEFT) || key.getCode().equals(KeyCode.A)) {
                     board.moveLeft();
-                    paint();
                 } else if (key.getCode().equals(KeyCode.RIGHT) || key.getCode().equals(KeyCode.D)) {
                     board.moveRight();
-                    paint();
                 } else if (key.getCode().equals(KeyCode.UP) || key.getCode().equals(KeyCode.W)) {
                     board.rotate();
-                    paint();
                 } else if (key.getCode().equals(KeyCode.DOWN) || key.getCode().equals(KeyCode.S)) {
                     board.moveDown();
-                    paint();
                 }
+                paint();
             }
             if (key.getCode().equals(KeyCode.SPACE)) {
                 pauseGame();
             }
         });
+
+        firstTry = true;
+        highScore = false;
 
         startNewGame();
 
@@ -408,8 +409,9 @@ public class TetrisGame extends Application {
     public void pauseGame() {
         if (gameOver) {
             shapeTransition.stop();
-            startNewGame();
-            stackPane.getChildren().removeAll(boardShade, gameOverCenter);
+            //startNewGame();
+            stackPane.getChildren().remove(gameOverCenter);
+            stackPane.getChildren().add(pauseCenter);
         }
         if (running) {
             running = false;
@@ -484,17 +486,38 @@ public class TetrisGame extends Application {
         vBox.setSpacing(10);
         vBox.setStyle("-fx-background-color: #f5f5f5");
 
-        String hiscores = "Parhaat tulokset\n\n"
-                + "Tänne on tarkoitus toteuttaa lista parhaista tuloksista\n";
+        HighScore[] highScores = HighScore.getHighScores();
+        
+        String top10 = HighScore.hiscoreHeaderToString();
+        
+        for (int i = 0; i < highScores.length; i++) {
+            top10 += HighScore.RightPad(String.valueOf(i + 1) + ".", 4) + highScores[i].toString();
+            
+        }
 
         Button backToMenu = new Button("Takaisin valikkoon");
         backToMenu.setOnAction((event) -> {
             stackPane.getChildren().remove(hiscoresBox);
         });
 
-        hiscoreLabel = new Label(hiscores);
+        hiscoreLabel = new Label(top10);
         vBox.getChildren().addAll(hiscoreLabel, backToMenu);
 
         return vBox;
+    }
+
+    private void updateHighScores() {
+        int score = board.getScore();
+        int level = board.getLevel();
+        int lines = board.getNumClearedLines();
+        if (score > HighScore.getHighScores()[9].getScore()) {
+            String name = JOptionPane.showInputDialog(null, "Pääsit 10 parhaan joukkoon!\n"
+                    + "Syötä nimesi.\nHuomio! Vain 10 ensimmäistä merkkiä tulee listalle.",
+                    "Tetris", JOptionPane.INFORMATION_MESSAGE);
+            if (name != null) {
+                HighScore.addHighScore(new HighScore(level, lines, score,
+                    (name.length() > 10) ? name.substring(0, 10) : name));
+            }
+        }
     }
 }

@@ -501,6 +501,7 @@ public class TetrisGame extends Application {
         });
 
         hiscoreLabel = new Label(top10);
+        hiscoreLabel.setFont(Font.font("monospace", 12));
         vBox.getChildren().addAll(hiscoreLabel, backToMenu);
 
         return vBox;

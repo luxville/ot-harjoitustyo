@@ -127,7 +127,7 @@ public class HighScore implements Serializable {
     }
     
     public static String hiscoreHeaderToString() {
-        String hiscoresHeader = "TOP 10\n\n" + RightPad("NIMI", 10) + RightPad("PISTEET", 8)
+        String hiscoresHeader = "TOP 10\n\n" + RightPad(" ", 4) + RightPad("NIMI", 10) + RightPad("PISTEET", 8)
                 + RightPad("TASO", 5) + RightPad("RIVIT", 6) + "\n\n";
 
         return hiscoresHeader;
@@ -137,7 +137,7 @@ public class HighScore implements Serializable {
         if (string.length() > 10) {
             string = string.substring(0, 10);
         }
-        return String.format("%" + length + "s", string) + "   ";
+        return String.format("%" + length + "s", string) + " ";
     }
     
     

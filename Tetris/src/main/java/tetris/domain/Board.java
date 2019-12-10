@@ -8,18 +8,29 @@ import java.util.Random;
 import java.util.Set;
 import java.util.function.Predicate;
 
+/**
+ * Luokka pelialueen luomiseen ja siinä tapahtuviin toimintoihin.
+ */
 public class Board {
 
-    public boolean gameOver;
-    public boolean gravity;
-    public int numClearedLines;
-    public int level;
-    public int score;
-    public int timePerBlock;
-    public List<Point> points;
-    public Random rand;
-    public Shape currentShape;
+    private boolean gameOver;
+    private boolean gravity;
+    private int numClearedLines;
+    private int level;
+    private int score;
+    private int timePerBlock;
+    private List<Point> points;
+    private Random rand;
+    private Shape currentShape;
+    
+    /** 
+     * Pelialueen leveys
+     */
     public static final int WIDTH = 10;
+    
+    /**
+     * Pelialueen korkeus
+     */
     public static final int HEIGHT = 22;
 
     public Board() {
@@ -35,6 +46,9 @@ public class Board {
         createCurrentShape();
     }
 
+    /**
+     * Luo satunnaisluvun perusteella palikan joka tulee välittömästi pelattavaksi.
+     */
     public void createCurrentShape() {
         int num = rand.nextInt(8);
 
@@ -124,24 +138,44 @@ public class Board {
         return true;
     }
 
+    /**
+     * Metodi kutsuu palikkaa kääntävää metodia, jos pyörittäminen on mahdollista.
+     */
     public void rotate() {
         if (canRotate()) {
             currentShape.rotate();
         }
     }
 
+    /**
+     * Metodi kutsuu palikkaa vasemmalle liikuttavaa metodia, jos vasemmalla 
+     * puolella ei ole ennestään varattuja ruutuja eikä vasen reuna ole liian 
+     * lähellä.
+     */
     public void moveLeft() {
         if (!hasPointsLeft() && !closeToLeftBorder()) {
             currentShape.moveLeft();
         }
     }
 
+    /**
+     * Metodi kutsuu palikkaa oikealle liikuttavaa metodia, jos oikealla 
+     * puolella ei ole ennestään varattuja ruutuja eikä oikea reuna ole liian 
+     * lähellä.
+     */
     public void moveRight() {
         if (!hasPointsRight() && !closeToRightBorder()) {
             currentShape.moveRight();
         }
     }
 
+    /**
+     * Metodi kutsuu palikkaa alaspäin liikuttavaa metodia, jos alapuolella ei 
+     * ole ennestään varattuja ruutuja eikä alareuna ole liian lähellä. Muussa
+     * tapauksessa metodi tarkistaa, onko pelialueen ylimmällä rivillä palikoita. 
+     * Jos näin on, ilmoittaa metodi pelin päättyneen, muussa tapauksessa luodaan
+     * uusi palikka ja poistetaan täydet rivit.
+     */
     public void moveDown() {
         if (!hasPointsDown() && !closeToBottomBorder()) {
             currentShape.moveDown();
@@ -243,6 +277,14 @@ public class Board {
         return base * (level + 1);
     }
 
+    /**
+     * Metodi luo listan kaikista pelialueella olevista pisteistä, myös parhaillaan
+     * pelattavana olevasta palikasta, siirtää pisteet HashSetiin varmistaen että 
+     * jokainen piste esiintyy pelialueella vain kerran ja palauttaa sitten kaikki
+     * pisteet takaisin listalle.
+     * 
+     * @return  lista kaikista pelialueella olevista pisteistä
+     */
     public List<Point> getPoints() {
         List<Point> points = new ArrayList<Point>();
 
@@ -273,7 +315,7 @@ public class Board {
         }
     }
 
-    public void getStatus() {
+/*    public void getStatus() {
         StringBuffer sb = new StringBuffer();
 
         sb.append(toString());
@@ -289,7 +331,7 @@ public class Board {
         sb.append(canRotate());
 
         System.out.println(sb.toString());
-    }
+    }*/
 
     public int getNumClearedLines() {
         return numClearedLines;
@@ -319,6 +361,13 @@ public class Board {
         return score;
     }
 
+    /**
+     * Metodi muodostaa ensin kokonaislukutaulukon pelialueesta pisteiden tyyppien
+     * mukaan numeroituna. Sitten muodostuneesta kokonaislukutaulukosta muodostetaan 
+     * riveittäin merkkijono.
+     * 
+     * @return  pelialueen pisteet merkkijonona tyypin mukaisesti numeroituna
+     */
     @Override
     public String toString() {
         int[][] board = new int[HEIGHT][WIDTH];

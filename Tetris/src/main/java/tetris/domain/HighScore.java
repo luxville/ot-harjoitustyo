@@ -9,6 +9,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+/**
+ * Luokka sisältää parhaiden tulosten listan luomiseen ja käsittelyyn
+ * tarvittavat metodit.
+ */
 public class HighScore implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,6 +60,16 @@ public class HighScore implements Serializable {
         this.name = name;
     }
 
+    /**
+     * Metodi vertailee parametrinaan saamansa tuloksen pisteitä tarkasteltavana
+     * olevan tuloksen pisteisiin.
+     *
+     * @param highScore tulos, johon sisältyvät saavutetut pisteet, taso, 
+     * tuhotut rivit ja pelaajan antama nimi.
+     *
+     * @return parametrina saadun ollessa pienempi palauttaa positiivisen, yhtä
+     * suuri palauttaa nollan ja suurempi palauttaa negatiivisen arvon
+     */
     public int compareTo(HighScore highScore) {
         return new Integer(this.score).compareTo(highScore.score);
     }
@@ -78,6 +92,13 @@ public class HighScore implements Serializable {
         }
     }
 
+    /**
+     * Metodi yrittää avata tiedoston, jossa tuloslista sijaitsee. Mikäli
+     * kyseistä tiedostoa ei löydy, se luodaan. Kun tiedosto on olemassa,
+     * haetaan siellä oleva tuloslista.
+     *
+     * @return tuloslista tuloksista koostuvana taulukkona
+     */
     public static HighScore[] getHighScores() {
         if (!new File("HighScores.dat").exists()) {
             initializeFile();
@@ -94,6 +115,14 @@ public class HighScore implements Serializable {
         return null;
     }
 
+    /**
+     * Metodi hakee parhaat tulokset tiedostosta, vertailee parametrinaan saamaansa 
+     * tulosta olemassaolevaan tuloslistaan ja sijoittaa tuloksen oikeaan kohtaan
+     * tuloslistalla. Sen jälkeen metodi tallentaa päivitetyn tuloslistan tiedostoon.
+     * 
+     * @param highScore     tulos, johon sisältyvät saavutetut pisteet, taso, 
+     * tuhotut rivit ja pelaajan antama nimi.
+     */
     public static void addHighScore(HighScore highScore) {
         HighScore[] highScores = getHighScores();
         int length = highScores.length;
@@ -116,6 +145,12 @@ public class HighScore implements Serializable {
         }
     }
 
+    /**
+     * Metodi luo tuloksesta tulostettavan version, jossa ovat nimi, pisteet,
+     * taso ja tuhotut rivit.
+     * 
+     * @return  tulos merkkijonona
+     */
     @Override
     public String toString() {
         name = RightPad(name, 10);
@@ -125,7 +160,12 @@ public class HighScore implements Serializable {
 
         return name + scoreString + levelString + linesString + "\n";
     }
-    
+
+    /**
+     * Metodi luo tuloslistaa varten otsikon ja seliterivin.
+     * 
+     * @return  tulostaulun otsikko ja seliterivi merkkijonona
+     */
     public static String hiscoreHeaderToString() {
         String hiscoresHeader = "TOP 10\n\n" + RightPad(" ", 4) + RightPad("NIMI", 10) + RightPad("PISTEET", 8)
                 + RightPad("TASO", 5) + RightPad("RIVIT", 6) + "\n\n";
@@ -133,12 +173,21 @@ public class HighScore implements Serializable {
         return hiscoresHeader;
     }
 
+    /**
+     * Metodi luo merkkijonosta oikeaan reunaan tasoittuvan korkeintaan 10 merkkiä
+     * pitkän merkkijonon tehden merkkijonosta halutun pituisen.
+     * 
+     * @param string    merkkijono, jota muokataan
+     * 
+     * @param length    haluttu merkkijonon pituus
+     * 
+     * @return          halutunmittaiseksi muokattu merkkijono
+     */
     public static String RightPad(String string, int length) {
         if (string.length() > 10) {
             string = string.substring(0, 10);
         }
         return String.format("%" + length + "s", string) + " ";
     }
-    
-    
+
 }

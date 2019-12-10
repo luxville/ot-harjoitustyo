@@ -6,13 +6,13 @@ Sovelluksessa käyttäjän tarkoituksena on järjestellä ruudun ylälaidasta pu
 
 ## Dokumentaatio
 
+[Käyttöohje](https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+
 [Vaatimusmäärittely](https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Työaikakirjanpito](https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 [Arkkitehtuurikuvaus](https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
-
-[Käyttöohje](https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
 ## Julkaisut
 
@@ -46,7 +46,15 @@ Tiedoston [checkstyle.xml](https://github.com/luxville/ot-harjoitustyo/blob/mast
 
 <code>mvn jxr:jxr checkstyle:checkstyle</code>
 
-Mahdollisia virheilmoituksia voi tarkastella selaimella avaamalla tiedosto*target/site/checkstyle.html*
+Mahdollisia virheilmoituksia voi tarkastella selaimella avaamalla tiedosto *target/site/checkstyle.html*
+
+### JavaDoc
+
+JavaDoc generoidaan komennolla
+
+<code>mvn javadoc:javadoc</code>
+
+JavaDocia voi tarkastella avaamalla selaimella tiedosto *target/site/apidocs/index.html*
 
 ## Missä mennään
 

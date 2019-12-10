@@ -16,4 +16,7 @@
 | 03.12. | 3    | jar-tiedoston ja releasen luominen, checkstyle-viilauksia ja sekvenssikaavio |
 |        | 1    | Koodin viilailua sieltä sun täältä |
 |        | 3    | Testien kanssa hikoilua |
-| Yht.   | 40
+| 09.12. | 5    | Parhaiden tulosten tallennus tiedostoon, pientä säätöä ja koodin siistimistä |
+| 10.12. | 5    | Tuloslista myös peliin näkyville. Käyttöohje, viikon release |
+|        | 3    | JavaDocin kanssa räpeltämistä |
+| Yht.   | 53

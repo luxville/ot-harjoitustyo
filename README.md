@@ -16,6 +16,8 @@ Sovelluksessa käyttäjän tarkoituksena on järjestellä ruudun ylälaidasta pu
 
 [Viikko 5](https://github.com/luxville/ot-harjoitustyo/releases/tag/tetris_vk5)
 
+[Viikko 6](https://github.com/luxville/ot-harjoitustyo/releases/tag/tetris_vk6)
+
 ## Komentorivitoiminnot
 
 ### Testaus
@@ -46,5 +48,5 @@ Mahdollisia virheilmoituksia voi tarkastella selaimella avaamalla tiedosto*targe
 
 ## Missä mennään
 
-Ohjelman suorittaminen onnistuu Netbeansissa sekä myös komentoriviltä komennolla <code>mvn compile exec:java -Dexec.mainClass=tetrisgame.Main</code>. Tällä hetkellä peli on pelattavassa kunnossa, mutta parhaiden tulosten listaa ei ole vielä toteutettu. Viime viikolla vaivannut ongelma, jossa palikat liikkuivat vasemmalta oikealle ja logiikka tuntui muutenkin olevan hukassa, on ratkaistu ja Tetristä pääsee harjoittelemaan omaksi ilokseen, kun parhaat tulokset eivät vielä tallennu minnekään jälkipolvia varten. Testitkin on lopulta saatu alkuun, tavoitetahdissa ei kuitenkaan vieläkään olla.
+Tällä hetkellä peli on pelattavassa kunnossa. Parhaiden tulosten lista päivittyy vasta kun pelin sammuttaa ja viimeisimmät tulokset ovat siis nähtävillä vasta pelin uudelleenkäynnistyksen jälkeen.
 

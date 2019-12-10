@@ -12,6 +12,8 @@ Sovelluksessa käyttäjän tarkoituksena on järjestellä ruudun ylälaidasta pu
 
 [Arkkitehtuurikuvaus](https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+[Käyttöohje](https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+
 ## Julkaisut
 
 [Viikko 5](https://github.com/luxville/ot-harjoitustyo/releases/tag/tetris_vk5)

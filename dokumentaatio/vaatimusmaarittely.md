@@ -14,9 +14,9 @@ Sovelluksesta on tarkoitus saada aikaiseksi versio, jolla pelaaminen onnistuu ja
 
 Sovellus koostuu neljästä eri näkymästä, joita ovat valikko, pelitila, ohjeet ja parhaat tulokset.
 
-Aloitusnäkymässä on valikko, josta voi aloittaa uuden pelin, katsoa parhaat tulokset (*nappi vie sivulle, jolle on tarkoitus toteuttaa parhaiden tulosten lista*), tutustua peliohjeisiin tai sulkea sovelluksen. Peli voidaan milloin tahansa keskeyttää ja siitä päästä takaisin valikkoon, valikosta pääsee myös jatkamaan kesken olevaa peliä, vaikka kävisikin välillä tutustumassa ohjeisiin tai parhaisiin tuloksiin. Käytännössä aloitussivu on sama kuin pelin keskeytyssivu.
+Aloitusnäkymässä on valikko, josta voi aloittaa uuden pelin, katsoa parhaat tulokset (*tehty, tosin nähtävillä oleva tuloslista päivittyy vain sulkemalla pelin ja käynnistämällä sen uudelleen*), tutustua peliohjeisiin tai sulkea sovelluksen. Peli voidaan milloin tahansa keskeyttää painamalla välilyöntiä ja siitä päästä takaisin valikkoon, valikosta pääsee myös jatkamaan kesken olevaa peliä, vaikka kävisikin välillä tutustumassa ohjeisiin tai parhaisiin tuloksiin. Käytännössä aloitussivu on sama kuin pelin keskeytyssivu. Tällä hetkellä vielä ominaisuutena on pelin jatkaminen sen päättymisen jälkeen. Näin toimimalla voi niin halutessaan täyttää tuloslistan samalla pelillä samalla pistemäärällä.
 
-Pelinäkymässä pelataan ja pelin päätyttyä pelaajalta kysytään nimi, jos hänen tuloksensa oikeuttaa parhaiden tulosten listalle. Tämän jälkeen palataan aloitusnäkymään. Peli kerää tiedot pudotetuista riveistä ja kokonaispistemäärästä.
+Pelinäkymässä pelataan ja pelin päätyttyä pelaajalta kysytään nimi, jos hänen tuloksensa oikeuttaa parhaiden tulosten listalle. (*tehty*) Tämän jälkeen palataan aloitusnäkymään. Peli kerää tiedot kokonaispistemäärästä, saavutetusta tasosta ja pudotetuista riveistä.
 
 Peliohjenäkymässä kerrotaan Tetriksen säännöt lyhyesti, käytettävät näppäimet ja niiden toiminnot.
 

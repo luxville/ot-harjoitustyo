@@ -125,9 +125,8 @@ public class HighScore implements Serializable {
      */
     public static void addHighScore(HighScore highScore) {
         HighScore[] highScores = getHighScores();
-        int length = highScores.length;
-        highScores[length - 1] = highScore;
-        for (int i = length - 2; i >= 0; i--) {
+        highScores[highScores.length - 1] = highScore;
+        for (int i = highScores.length - 2; i >= 0; i--) {
             if (highScores[i + 1].compareTo(highScores[i]) > 0) {
                 HighScore temp = highScores[i];
                 highScores[i] = highScores[i + 1];
@@ -153,10 +152,10 @@ public class HighScore implements Serializable {
      */
     @Override
     public String toString() {
-        name = RightPad(name, 10);
-        String scoreString = RightPad(String.valueOf(score), 8);
-        String levelString = RightPad(String.valueOf(level), 5);
-        String linesString = RightPad(String.valueOf(lines), 6);
+        name = rightPad(name, 10);
+        String scoreString = rightPad(String.valueOf(score), 8);
+        String levelString = rightPad(String.valueOf(level), 5);
+        String linesString = rightPad(String.valueOf(lines), 6);
 
         return name + scoreString + levelString + linesString + "\n";
     }
@@ -167,8 +166,8 @@ public class HighScore implements Serializable {
      * @return  tulostaulun otsikko ja seliterivi merkkijonona
      */
     public static String hiscoreHeaderToString() {
-        String hiscoresHeader = "TOP 10\n\n" + RightPad(" ", 4) + RightPad("NIMI", 10) + RightPad("PISTEET", 8)
-                + RightPad("TASO", 5) + RightPad("RIVIT", 6) + "\n\n";
+        String hiscoresHeader = "TOP 10\n\n" + rightPad(" ", 4) + rightPad("NIMI", 10) + rightPad("PISTEET", 8)
+                + rightPad("TASO", 5) + rightPad("RIVIT", 6) + "\n\n";
 
         return hiscoresHeader;
     }
@@ -183,7 +182,7 @@ public class HighScore implements Serializable {
      * 
      * @return          halutunmittaiseksi muokattu merkkijono
      */
-    public static String RightPad(String string, int length) {
+    public static String rightPad(String string, int length) {
         if (string.length() > 10) {
             string = string.substring(0, 10);
         }

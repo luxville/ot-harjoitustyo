@@ -491,7 +491,7 @@ public class TetrisGame extends Application {
         String top10 = HighScore.hiscoreHeaderToString();
         
         for (int i = 0; i < highScores.length; i++) {
-            top10 += HighScore.RightPad(String.valueOf(i + 1) + ".", 4) + highScores[i].toString();
+            top10 += HighScore.rightPad(String.valueOf(i + 1) + ".", 4) + highScores[i].toString();
             
         }
 

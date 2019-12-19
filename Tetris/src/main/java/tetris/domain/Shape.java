@@ -32,8 +32,7 @@ public class Shape {
     }
 
     /**
-     * Metodissa luodaan palikat sijoittamalla niiden tyypin mukaan ruutuja
-     * pelialueen ylälaitaan.
+     * Kutsuu palikat luovia metodeja palikan tyypin mukaan.
      */
     private void createPoints() {
         switch (type) {
@@ -61,7 +60,7 @@ public class Shape {
     }
 
     /**
-     * Metodissa palikkaa siirretään alaspäin.
+     * Siirtää palikkaa alaspäin.
      */
     public void moveDown() {
         for (Point point : points) {
@@ -70,7 +69,7 @@ public class Shape {
     }
 
     /**
-     * Metodissa palikkaa siirretään vasemmalle.
+     * Siirtää palikkaa vasemmalle.
      */
     public void moveLeft() {
         for (Point point : points) {
@@ -79,7 +78,7 @@ public class Shape {
     }
 
     /**
-     * Metodissa palikkaa siirretään oikealle.
+     * Siirtää palikkaa oikealle.
      */
     public void moveRight() {
         for (Point point : points) {
@@ -88,7 +87,7 @@ public class Shape {
     }
 
     /**
-     * Metodissa palikan pisteille lasketaan sen tyypin perusteella kulloinkin
+     * Palikan pisteille lasketaan sen tyypin perusteella kulloinkin
      * oikea seuraava tila.
      */
     public void rotate() {
@@ -113,7 +112,7 @@ public class Shape {
     }
 
     /**
-     * Metodissa vuorossa olevaa palikkaa käännetään.
+     * Vuorossa olevaa palikkaa käännetään.
      *
      * @return lista palikan pisteistä sen kääntämisen jälkeen
      */
@@ -133,7 +132,7 @@ public class Shape {
     }
 
     /**
-     * Metodissa luodaan merkkijono kaikkien palikan pisteiden koordinaateista.
+     * Luo merkkijonon kaikkien palikan pisteiden koordinaateista.
      *
      * @return merkkijono, jossa on kaikkien palikan pisteiden koordinaatit
      */
@@ -148,6 +147,9 @@ public class Shape {
         return str;
     }
 
+    /**
+     * Kääntää tyypin 2 eli I-palikkaa.
+     */
     private void rotateType2() {
         for (Point point : points) {
             if (rotation == 0) {
@@ -162,6 +164,9 @@ public class Shape {
         }
     }
 
+    /** 
+     * Kääntää muita kuin tyypin 2 eli I-palikoita.
+     */
     private void rotateOtherTypes() {
         for (Point point : points) {
             if (rotation == 1 || rotation == 2) {
@@ -172,6 +177,9 @@ public class Shape {
         }
     }
 
+    /** 
+     * Luo tyypin 1 eli L-palikan.
+     */
     private void createL() {
         this.points.add(new Point(5, 0, type));
         this.points.add(new Point(4, 1, type));
@@ -179,42 +187,29 @@ public class Shape {
         this.points.add(new Point(3, 1, type));
     }
 
+    /** 
+     * Luo tyypin 2 eli I-palikan.
+     */
     private void createI() {
         this.points.add(new Point(3, 0, type));
         this.points.add(new Point(4, 0, type));
         this.points.add(new Point(5, 0, type));
         this.points.add(new Point(6, 0, type));
-
     }
 
+    /** 
+     * Luo tyypin 3 eli T-palikan.
+     */
     private void createT() {
         this.points.add(new Point(4, 0, type));
         this.points.add(new Point(4, 1, type));
         this.points.add(new Point(5, 1, type));
         this.points.add(new Point(3, 1, type));
-
     }
 
-    /*if (type != 7 && type != 4 && type != 3 && type != 1) {
-            this.points.add(new Point(3, 0, type));
-        }
-        if (type != 6 && type != 1) {
-            this.points.add(new Point(4, 0, type));
-        }
-        if (type != 6 && type != 5 && type != 3) {
-            this.points.add(new Point(5, 0, type));
-        }
-        if (type == 2) {
-            this.points.add(new Point(6, 0, type));
-        } else {
-            this.points.add(new Point(4, 1, type));
-        }
-        if (type != 4 && type != 2) {
-            this.points.add(new Point(5, 1, type));
-        }
-        if (type == 6 || type == 4 || type == 3 || type == 1) {
-            this.points.add(new Point(3, 1, type));
-        }*/
+    /** 
+     * Luo tyypin 4 eli S-palikan.
+     */
     private void createS() {
         this.points.add(new Point(4, 0, type));
         this.points.add(new Point(5, 0, type));
@@ -222,6 +217,9 @@ public class Shape {
         this.points.add(new Point(3, 1, type));
     }
 
+    /** 
+     * Luo tyypin 5 eli Z-palikan.
+     */
     private void createZ() {
         this.points.add(new Point(3, 0, type));
         this.points.add(new Point(4, 0, type));
@@ -229,6 +227,9 @@ public class Shape {
         this.points.add(new Point(5, 1, type));
     }
 
+    /** 
+     * Luo tyypin 6 eli J-palikan.
+     */
     private void createJ() {
         this.points.add(new Point(3, 0, type));
         this.points.add(new Point(4, 1, type));
@@ -236,6 +237,9 @@ public class Shape {
         this.points.add(new Point(3, 1, type));
     }
 
+    /** 
+     * Luo tyypin 7 eli O-palikan.
+     */
     private void createO() {
         this.points.add(new Point(4, 0, type));
         this.points.add(new Point(5, 0, type));

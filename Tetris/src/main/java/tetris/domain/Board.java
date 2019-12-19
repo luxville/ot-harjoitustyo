@@ -51,23 +51,26 @@ public class Board {
     }
 
     /**
-     * Luo satunnaisluvun perusteella palikan joka tulee välittömästi
+     * Luo satunnaisluvun perusteella palikan, joka tulee välittömästi
      * pelattavaksi.
      */
     public void createCurrentShape() {
         int num = rand.nextInt(8);
-
         if (num == 7 || (currentShape != null && num == currentShape.getType())) {
             num = rand.nextInt(7);
         }
-
         if (currentShape != null) {
             points.addAll(currentShape.getPoints());
         }
-
         currentShape = new Shape(num + 1);
     }
 
+    /**
+     * Tarkistaa, onko pisteen alapuolella jo jokin toinen piste.
+     * 
+     * @return totuusarvo siitä, onko tarkasteltavan pisteen alapuolella jo 
+     * jokin toinen piste.
+     */
     private boolean hasPointsDown() {
         for (Point point : currentShape.getPoints()) {
             if (points.contains(new Point(point.getX(), point.getY() + 1))) {
@@ -77,6 +80,12 @@ public class Board {
         return false;
     }
 
+    /**
+     * Tarkistaa, onko pisteen oikealla puolella jo jokin toinen piste.
+     * 
+     * @return totuusarvo siitä, onko tarkasteltavan pisteen oikealla puolella jo 
+     * jokin toinen piste.
+     */
     private boolean hasPointsRight() {
         for (Point point : currentShape.getPoints()) {
             if (points.contains(new Point(point.getX() + 1, point.getY()))) {
@@ -86,6 +95,12 @@ public class Board {
         return false;
     }
 
+    /**
+     * Tarkistaa, onko pisteen vasemmalla puolella jo jokin toinen piste.
+     * 
+     * @return totuusarvo siitä, onko tarkasteltavan pisteen vasemmalla puolella 
+     * jo jokin toinen piste.
+     */
     private boolean hasPointsLeft() {
         for (Point point : currentShape.getPoints()) {
             if (points.contains(new Point(point.getX() - 1, point.getY()))) {

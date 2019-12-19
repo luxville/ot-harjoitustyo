@@ -153,11 +153,7 @@ public class TetrisGame extends Application {
             gameOverSub.setFont(Font.font("Segoe UI Semilight", 13.0));
             gameOverSub.setTextAlignment(TextAlignment.CENTER);
 
-            Button backToMenu = backToMenuButton(vBoxGameOver);/*new Button("Takaisin valikkoon");
-            backToMenu.setOnAction((event) -> {
-                stackPane.getChildren().remove(vBoxGameOver);
-                stackPane.getChildren().add(pauseCenter);
-            });*/
+            Button backToMenu = backToMenuButton(vBoxGameOver);
 
             vBoxGameOver = new VBox();
             vBoxGameOver.getChildren().addAll(gameOverTitle, gameOverSub, backToMenu);
@@ -424,10 +420,7 @@ public class TetrisGame extends Application {
                 + "sulkea sovellus kokonaan. Peli jatkuu myös painamalla\n"
                 + "välilyöntiä uudestaan.";
 
-        Button backToMenu = backToMenuButton(vBox);/*new Button("Takaisin valikkoon");
-        backToMenu.setOnAction((event) -> {
-            stackPane.getChildren().remove(instructionsBox);
-        });*/
+        Button backToMenu = backToMenuButton(vBox);
 
         instructions = new Label(INSTRUCTIONS);
         vBox.getChildren().addAll(instructions, backToMenu);
@@ -450,11 +443,7 @@ public class TetrisGame extends Application {
         }
 
         Button backToMenu = backToMenuButton(vBox);
-   /*             new Button("Takaisin valikkoon");
-        backToMenu.setOnAction((event) -> {
-            stackPane.getChildren().remove(hiscoresBox);
-        });
-*/
+        
         hiscoreLabel = new Label(top10);
         hiscoreLabel.setFont(Font.font("monospace", 12));
         vBox.getChildren().addAll(hiscoreLabel, backToMenu);
@@ -515,10 +504,10 @@ public class TetrisGame extends Application {
         });
     }
 
-    private Button backToMenuButton(VBox vbox) {
+    private Button backToMenuButton(VBox vBox) {
         Button backToMenu = new Button("Takaisin valikkoon");
         backToMenu.setOnAction((event) -> {
-            stackPane.getChildren().remove(vbox);
+            stackPane.getChildren().remove(vBox);
             stackPane.getChildren().add(pauseCenter);
         });
         return backToMenu;

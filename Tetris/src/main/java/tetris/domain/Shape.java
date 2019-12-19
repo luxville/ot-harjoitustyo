@@ -8,9 +8,11 @@ import java.util.List;
  */
 public class Shape {
 
-    public int type;
-    public int rotation;
-    public List<Point> points;
+    private int lowX;
+    private int lowY;
+    private int type;
+    private int rotation;
+    private List<Point> points;
 
     public Shape(int num) {
         this.type = num;
@@ -84,14 +86,13 @@ public class Shape {
     }
 
     /**
-     * Metodissa palikan pisteille lasketaan sen tyypin perusteella
-     * kulloinkin oikea seuraava tila.
+     * Metodissa palikan pisteille lasketaan sen tyypin perusteella kulloinkin
+     * oikea seuraava tila.
      */
     public void rotate() {
+        lowX = 100;
+        lowY = 100;
         if (type != 7) {
-            int lowX = 100;
-            int lowY = 100;
-            
             for (Point point : points) {
                 if (point.getX() < lowX) {
                     lowX = point.getX();
@@ -100,65 +101,72 @@ public class Shape {
                     lowY = point.getY();
                 }
             }
-
             if (type == 2) {
-                for (Point point : points) {
-                    if (rotation == 0) {
-                        point.setLocation(point.getY() - lowY + lowX + 2, point.getX() - lowX + lowY - 1);
-                    } else if (rotation == 1) {
-                        point.setLocation(point.getY() - lowY + lowX - 2, point.getX() - lowX + lowY + 2);
-                    } else if (rotation == 2) {
-                        point.setLocation(point.getY() - lowY + lowX + 1, point.getX() - lowX + lowY - 2);
-                    } else {
-                        point.setLocation(point.getY() - lowY + lowX - 1, point.getX() - lowX + lowY + 1);
-                    }
-                }
+                rotateType2();
             } else {
-                for (Point point : points) {
-                    if (rotation == 1 || rotation == 2) {
-                        point.setLocation(2 - (point.getY() - lowY) + lowX - 1, (point.getX() - lowX - 1 + (rotation % 2 * 2)) + lowY);
-                    } else {
-                        point.setLocation(2 - (point.getY() - lowY) + lowX, (point.getX() - lowX) + lowY);
-                    }
-                }
+                rotateOtherTypes();
             }
         }
         rotation = (rotation + 1) % 4;
     }
-    
+
     /**
      * Metodissa vuorossa olevaa palikkaa käännetään.
-     * 
-     * @return  lista palikan pisteistä sen kääntämisen jälkeen
+     *
+     * @return lista palikan pisteistä sen kääntämisen jälkeen
      */
     public List<Point> getRotatePoints() {
         Shape rotated = new Shape(this);
-        
+
         rotated.rotate();
         return rotated.points;
     }
-    
+
     public int getType() {
         return type;
     }
-    
+
     public List<Point> getPoints() {
         return points;
     }
-    
+
     /**
      * Metodissa luodaan merkkijono kaikkien palikan pisteiden koordinaateista.
-     * 
-     * @return  merkkijono, jossa on kaikkien palikan pisteiden koordinaatit
+     *
+     * @return merkkijono, jossa on kaikkien palikan pisteiden koordinaatit
      */
     @Override
     public String toString() {
         String str = "";
-        
+
         for (Point point : points) {
             str += "x: " + point.getX() + " y: " + point.getY() + "\n";
         }
-        
+
         return str;
+    }
+
+    private void rotateType2() {
+        for (Point point : points) {
+            if (rotation == 0) {
+                point.setLocation(point.getY() - lowY + lowX + 2, point.getX() - lowX + lowY - 1);
+            } else if (rotation == 1) {
+                point.setLocation(point.getY() - lowY + lowX - 2, point.getX() - lowX + lowY + 2);
+            } else if (rotation == 2) {
+                point.setLocation(point.getY() - lowY + lowX + 1, point.getX() - lowX + lowY - 2);
+            } else {
+                point.setLocation(point.getY() - lowY + lowX - 1, point.getX() - lowX + lowY + 1);
+            }
+        }
+    }
+
+    private void rotateOtherTypes() {
+        for (Point point : points) {
+            if (rotation == 1 || rotation == 2) {
+                point.setLocation(2 - (point.getY() - lowY) + lowX - 1, (point.getX() - lowX - 1 + (rotation % 2 * 2)) + lowY);
+            } else {
+                point.setLocation(2 - (point.getY() - lowY) + lowX, (point.getX() - lowX) + lowY);
+            }
+        }
     }
 }

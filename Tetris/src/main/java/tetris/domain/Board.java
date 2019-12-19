@@ -203,42 +203,6 @@ public class Board {
             }
             if (fullLines.size() != 0) {
                 fullinesSixeNotZero();
-                /*numClearedLines += fullLines.size();
-                score += calculateCurrentScore(fullLines.size());
-                for (int i : fullLines) {
-                    if (i > mostBottomLine) {
-                        mostBottomLine = i;
-                    }
-
-                    Predicate<Point> pointsPredicate = p -> p.getY() == i;
-                    points.removeIf(pointsPredicate);
-
-                    for (int j = 0; j < points.size(); j++) {
-                        if (points.get(j).getY() < i) {
-                            points.get(j).modY(1);
-                        }
-                    }
-                }
-                if (mostBottomLine != HEIGHT - 1) {
-                    allPoints = getPoints();
-
-                    for (int i = 0; i < WIDTH; i++) {
-                        int numOfEmpty = 0;
-
-                        for (int j = mostBottomLine + 1; j < HEIGHT; j++) {
-                            if (!allPoints.contains((new Point(i, j)))) {
-                                numOfEmpty++;
-                            } else {
-                                break;
-                            }
-                        }
-
-                        if (numOfEmpty != 0) {
-                            gravityTriggered = false;
-                            gravityTriggered = numOfEmptyNotZero(i, gravityTriggered, mostBottomLine, numOfEmpty);
-                        }
-                    }
-                }*/
             }
         } while (gravityTriggered);
         level = numClearedLines / 10;

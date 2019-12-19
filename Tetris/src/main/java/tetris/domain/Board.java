@@ -14,12 +14,16 @@ import java.util.function.Predicate;
 public class Board {
 
     private boolean gameOver;
-    private boolean gravity;
+    private boolean gravityTriggered;
     private int numClearedLines;
     private int level;
+    private int mostBottomLine;
+    private int numOfEmpty = 0;
     private int score;
     private int timePerBlock;
     private List<Point> points;
+    private List<Integer> fullLines;
+    private List<Point> allPoints;
     private Random rand;
     private Shape currentShape;
 
@@ -35,7 +39,7 @@ public class Board {
 
     public Board() {
         this.gameOver = false;
-        this.gravity = true;
+        // this.gravity = true;
         this.numClearedLines = 0;
         this.level = 0;
         this.score = 0;
@@ -192,34 +196,15 @@ public class Board {
     }
 
     private void removeLines() {
-        boolean gravityTriggered;
-
         do {
-            gravityTriggered = false;
-            List<Integer> fullLines = new ArrayList<Integer>(HEIGHT);
-            List<Point> allPoints = getPoints();
-
+            removeLinesSetup();
             if (allPoints.size() != 0) {
-                for (int i = 0; i < HEIGHT; i++) {
-                    boolean full = true;
-                    row:
-                    for (int j = 0; j < WIDTH; j++) {
-                        if (!allPoints.contains(new Point(j, i))) {
-                            full = false;
-                            break row;
-                        }
-                    }
-                    if (full) {
-                        fullLines.add(i);
-                    }
-                }
+                allPointsSizeNotZero();
             }
             if (fullLines.size() != 0) {
-                numClearedLines += fullLines.size();
+                fullinesSixeNotZero();
+                /*numClearedLines += fullLines.size();
                 score += calculateCurrentScore(fullLines.size());
-
-                int mostBottomLine = 0;
-
                 for (int i : fullLines) {
                     if (i > mostBottomLine) {
                         mostBottomLine = i;
@@ -234,7 +219,7 @@ public class Board {
                         }
                     }
                 }
-                if (mostBottomLine != HEIGHT - 1 && gravity) {
+                if (mostBottomLine != HEIGHT - 1) {
                     allPoints = getPoints();
 
                     for (int i = 0; i < WIDTH; i++) {
@@ -251,15 +236,9 @@ public class Board {
                         if (numOfEmpty != 0) {
                             gravityTriggered = false;
                             gravityTriggered = numOfEmptyNotZero(i, gravityTriggered, mostBottomLine, numOfEmpty);
-                            /*for (int j = 0; j < points.size(); j++) {
-                                if (points.get(j).getX() == i && points.get(j).getY() <= mostBottomLine) {
-                                    points.get(j).modY(numOfEmpty);
-                                    gravityTriggered = true;
-                                }
-                            }*/
                         }
                     }
-                }
+                }*/
             }
         } while (gravityTriggered);
         level = numClearedLines / 10;
@@ -339,14 +318,13 @@ public class Board {
         return numClearedLines;
     }
 
-    public boolean getGravity() {
+    /*public boolean getGravity() {
         return gravity;
     }
 
     public void setGravity(boolean gravity) {
         this.gravity = gravity;
-    }
-
+    }*/
     public boolean getGameOver() {
         return gameOver;
     }
@@ -388,7 +366,7 @@ public class Board {
 
         return str;
     }
-//i, gravityTriggered, mostBottomLine, numOfEmpty
+
     private boolean numOfEmptyNotZero(int i, boolean gravityTriggered, int mostBottomLine, int numOfEmpty) {
         for (int j = 0; j < points.size(); j++) {
             if (points.get(j).getX() == i && points.get(j).getY() <= mostBottomLine) {
@@ -397,5 +375,66 @@ public class Board {
             }
         }
         return gravityTriggered;
+    }
+
+    private void allPointsSizeNotZero() {
+        for (int i = 0; i < HEIGHT; i++) {
+            boolean full = true;
+            row:
+            for (int j = 0; j < WIDTH; j++) {
+                if (!this.allPoints.contains(new Point(j, i))) {
+                    full = false;
+                    break row;
+                }
+            }
+            if (full) {
+                fullLines.add(i);
+            }
+        }
+    }
+
+    private void removeLinesSetup() {
+        gravityTriggered = false;
+        fullLines = new ArrayList<Integer>(HEIGHT);
+        allPoints = getPoints();
+        mostBottomLine = 0;
+        numOfEmpty = 0;
+    }
+
+    private void fullinesSixeNotZero() {
+        numClearedLines += fullLines.size();
+        score += calculateCurrentScore(fullLines.size());
+        for (int i : fullLines) {
+            if (i > mostBottomLine) {
+                mostBottomLine = i;
+            }
+            Predicate<Point> pointsPredicate = p -> p.getY() == i;
+            points.removeIf(pointsPredicate);
+            for (int j = 0; j < points.size(); j++) {
+                if (points.get(j).getY() < i) {
+                    points.get(j).modY(1);
+                }
+            }
+        }
+        if (mostBottomLine != HEIGHT - 1) {
+            mostBottomLineBoardNotFull();
+        }
+    }
+
+    private void mostBottomLineBoardNotFull() {
+        allPoints = getPoints();
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = mostBottomLine + 1; j < HEIGHT; j++) {
+                if (!allPoints.contains((new Point(i, j)))) {
+                    numOfEmpty++;
+                } else {
+                    break;
+                }
+            }
+            if (numOfEmpty != 0) {
+                gravityTriggered = false;
+                gravityTriggered = numOfEmptyNotZero(i, gravityTriggered, mostBottomLine, numOfEmpty);
+            }
+        }
     }
 }

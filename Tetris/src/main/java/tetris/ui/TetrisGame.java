@@ -52,7 +52,6 @@ public class TetrisGame extends Application {
     private GridPane tetrisGrid;
     private Group cellGroup;
     private HBox root;
-    private int colorChoice;
     private int shapeSpeed;
     private Label gameOverSub;
     private Label gameOverTitle;
@@ -66,9 +65,7 @@ public class TetrisGame extends Application {
     private Label subLine;
     private Label subScore;
     private List<Point> points;
-    private Map<Integer, Map<Integer, Color>> colors;
-    private Map<Integer, Color> color1;
-    private Map<Integer, Color> color2;
+    private Map<Integer, Color> colors;
     private PauseTransition pauseTransition;
     private Polygon bottomShade;
     private Point currentPoint;
@@ -115,7 +112,7 @@ public class TetrisGame extends Application {
                     if (points.contains(currentPoint)) {
                         setShades(true);
 
-                        square.setFill(colors.get(colorChoice).get(points.get(points.indexOf(currentPoint)).getType()));
+                        square.setFill(colors.get(points.get(points.indexOf(currentPoint)).getType()));
                         cellGroup.getChildren().addAll(square, topShade, bottomShade);
                     } else {
                         setShades(false);
@@ -153,9 +150,8 @@ public class TetrisGame extends Application {
             gameOverSub.setFont(Font.font("Segoe UI Semilight", 13.0));
             gameOverSub.setTextAlignment(TextAlignment.CENTER);
 
-            Button backToMenu = backToMenuButton(vBoxGameOver);
-
             vBoxGameOver = new VBox();
+            Button backToMenu = backToMenuButton(vBoxGameOver);
             vBoxGameOver.getChildren().addAll(gameOverTitle, gameOverSub, backToMenu);
             vBoxGameOver.setAlignment(Pos.CENTER);
 
@@ -169,28 +165,14 @@ public class TetrisGame extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        colorChoice = 0;
-        colors = new HashMap<Integer, Map<Integer, Color>>();
-
-        color1 = new HashMap<Integer, Color>();
-        color1.put(1, Color.ORANGE);
-        color1.put(2, Color.CYAN);
-        color1.put(3, Color.PURPLE);
-        color1.put(4, Color.GREEN);
-        color1.put(5, Color.RED);
-        color1.put(6, Color.BLUE);
-        color1.put(7, Color.YELLOW);
-        colors.put(0, color1);
-
-        color2 = new HashMap<Integer, Color>();
-        color2.put(1, Color.rgb(248, 121, 41));
-        color2.put(2, Color.rgb(11, 165, 223));
-        color2.put(3, Color.rgb(192, 58, 180));
-        color2.put(4, Color.rgb(135, 212, 47));
-        color2.put(5, Color.rgb(215, 23, 53));
-        color2.put(6, Color.rgb(44, 87, 220));
-        color2.put(7, Color.rgb(251, 187, 49));
-        colors.put(1, color2);
+        colors = new HashMap<Integer, Color>();
+        colors.put(1, Color.ORANGE);
+        colors.put(2, Color.CYAN);
+        colors.put(3, Color.PURPLE);
+        colors.put(4, Color.GREEN);
+        colors.put(5, Color.RED);
+        colors.put(6, Color.BLUE);
+        colors.put(7, Color.YELLOW);
 
         tetrisGrid = new GridPane();
 
@@ -360,7 +342,7 @@ public class TetrisGame extends Application {
         if (gameOver) {
             shapeTransition.stop();
             //startNewGame();
-            stackPane.getChildren().remove(gameOverCenter);
+            stackPane.getChildren().removeAll(gameOverCenter, vBoxGameOver);
             stackPane.getChildren().add(pauseCenter);
         }
         if (running) {

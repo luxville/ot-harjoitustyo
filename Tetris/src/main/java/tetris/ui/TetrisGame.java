@@ -113,56 +113,18 @@ public class TetrisGame extends Application {
                     shadeThick = (double) PIXEL / 7.5;
 
                     if (points.contains(currentPoint)) {
-                        topShade.setOpacity(0.5);
-                        topShade.setFill(Color.WHITE);
-                        topShade.getPoints().addAll(new Double[]{
-                            0.0, 0.0, (double) PIXEL, 0.0, (double) PIXEL - shadeThick,
-                            shadeThick, shadeThick, shadeThick, shadeThick,
-                            (double) PIXEL - shadeThick, 0.0, (double) PIXEL
-                        });
-
-                        bottomShade.setOpacity(0.5);
-                        bottomShade.setFill(Color.BLACK);
-                        bottomShade.getPoints().addAll(new Double[]{
-                            0.0, (double) PIXEL, (double) PIXEL, (double) PIXEL,
-                            (double) PIXEL, 0.0, (double) PIXEL - shadeThick,
-                            shadeThick, (double) PIXEL - shadeThick,
-                            (double) PIXEL - shadeThick, shadeThick,
-                            (double) PIXEL - shadeThick
-                        });
+                        setShades(true);
 
                         square.setFill(colors.get(colorChoice).get(points.get(points.indexOf(currentPoint)).getType()));
                         cellGroup.getChildren().addAll(square, topShade, bottomShade);
                     } else {
-                        topShade.setOpacity(0.1);
-                        topShade.setFill(Color.BLACK);
-                        topShade.getPoints().addAll(new Double[]{
-                            0.0, 0.0, (double) PIXEL, 0.0,
-                            (double) PIXEL - shadeThick, shadeThick, shadeThick,
-                            shadeThick, shadeThick, (double) PIXEL - shadeThick,
-                            0.0, (double) PIXEL
-                        });
-
-                        bottomShade.setOpacity(0.25);
-                        bottomShade.setFill(Color.BLACK);
-                        bottomShade.getPoints().addAll(new Double[]{
-                            0.0, (double) PIXEL, (double) PIXEL, (double) PIXEL,
-                            (double) PIXEL, 0.0, (double) PIXEL - shadeThick,
-                            shadeThick, (double) PIXEL - shadeThick,
-                            (double) PIXEL - shadeThick, shadeThick,
-                            (double) PIXEL - shadeThick
-                        });
+                        setShades(false);
 
                         topRec = new Rectangle(PIXEL, PIXEL / 2.65);
                         topRec.setOpacity(0.05);
                         topRec.setFill(Color.WHITE);
 
-                        halfCircle = new Arc((double) PIXEL / 2.0, (double) PIXEL / 2.0,
-                                (double) PIXEL / 2.0, (double) PIXEL / 8.0, 0.0f, 180.0f);
-                        halfCircle.setOpacity(0.05);
-                        halfCircle.setFill(Color.WHITE);
-                        halfCircle.setType(ArcType.ROUND);
-                        halfCircle.setRotate(180.0);
+                        halfCircle = setHalfCircle();
 
                         square.setFill(Color.GRAY);
                         square.setOpacity((55.0 / 62.0 - ((double) i + 30.0) / ((double) Board.HEIGHT + 50.0)));
@@ -191,11 +153,11 @@ public class TetrisGame extends Application {
             gameOverSub.setFont(Font.font("Segoe UI Semilight", 13.0));
             gameOverSub.setTextAlignment(TextAlignment.CENTER);
 
-            Button backToMenu = new Button("Takaisin valikkoon");
+            Button backToMenu = backToMenuButton(vBoxGameOver);/*new Button("Takaisin valikkoon");
             backToMenu.setOnAction((event) -> {
-                stackPane.getChildren().remove(gameOverCenter);
+                stackPane.getChildren().remove(vBoxGameOver);
                 stackPane.getChildren().add(pauseCenter);
-            });
+            });*/
 
             vBoxGameOver = new VBox();
             vBoxGameOver.getChildren().addAll(gameOverTitle, gameOverSub, backToMenu);
@@ -204,7 +166,7 @@ public class TetrisGame extends Application {
             gameOverCenter = new BorderPane();
             gameOverCenter.setCenter(vBoxGameOver);
 
-            stackPane.getChildren().addAll(boardShade, gameOverCenter);
+            stackPane.getChildren().addAll(boardShade, vBoxGameOver);
             updateHighScores();
         }
     }
@@ -235,8 +197,6 @@ public class TetrisGame extends Application {
         colors.put(1, color2);
 
         tetrisGrid = new GridPane();
-        //tetrisGrid.getStyleClass().add("grid");
-        //tetrisGrid.getStyleClass().add("background");
 
         for (int i = 0; i < Board.WIDTH; i++) {
             tetrisGrid.getColumnConstraints().add(new ColumnConstraints(PIXEL));
@@ -247,24 +207,16 @@ public class TetrisGame extends Application {
         }
 
         vBoxBottom = new VBox();
-        //vBoxBottom.getStyleClass().add("background");
 
         score = new Label();
         level = new Label();
         line = new Label();
 
-        //score.getStyleClass().add("score");
-        //level.getStyleClass().add("score");
-        //line.getStyleClass().add("score");
         subScore = new Label("pisteet");
         subLevel = new Label("taso");
         subLine = new Label("tuhotut rivit");
 
-        //subScore.getStyleClass().add("subScore");
-        //subLevel.getStyleClass().add("subScore");
-        //subLine.getStyleClass().add("subScore");
         vBoxTop = new VBox();
-        //vBoxTop.getStyleClass().add("background");
         vBoxTop.getChildren().addAll(score, subScore, level, subLevel, line, subLine);
 
         spacePause = new Label("keskeytä painamalla välilyöntiä");
@@ -273,7 +225,6 @@ public class TetrisGame extends Application {
         vBoxBottom.getChildren().add(spacePause);
 
         borderPane = new BorderPane();
-        //borderPane.getStyleClass().add("background");
         borderPane.setTop(vBoxTop);
         borderPane.setBottom(vBoxBottom);
 
@@ -281,7 +232,6 @@ public class TetrisGame extends Application {
         stackPane.getChildren().add(tetrisGrid);
 
         root = new HBox();
-        //root.getStyleClass().add("background");
         root.setPadding(new Insets(5.0));
         root.setSpacing(25.0);
         root.getChildren().addAll(borderPane, stackPane);
@@ -340,6 +290,19 @@ public class TetrisGame extends Application {
 
         scene = new Scene(root);
         //scene.getStylesheets().add("file:resurssit/application.css");
+        setControls();
+
+        firstTry = true;
+        highScore = false;
+
+        startNewGame();
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("TETRIS");
+        primaryStage.show();
+    }
+
+    public void setControls() {
         scene.setOnKeyPressed((key) -> {
             if (running) {
                 if (key.getCode().equals(KeyCode.LEFT) || key.getCode().equals(KeyCode.A)) {
@@ -357,15 +320,6 @@ public class TetrisGame extends Application {
                 pauseGame();
             }
         });
-
-        firstTry = true;
-        highScore = false;
-
-        startNewGame();
-
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("TETRIS");
-        primaryStage.show();
     }
 
     public void createTransition() {
@@ -470,10 +424,10 @@ public class TetrisGame extends Application {
                 + "sulkea sovellus kokonaan. Peli jatkuu myös painamalla\n"
                 + "välilyöntiä uudestaan.";
 
-        Button backToMenu = new Button("Takaisin valikkoon");
+        Button backToMenu = backToMenuButton(vBox);/*new Button("Takaisin valikkoon");
         backToMenu.setOnAction((event) -> {
             stackPane.getChildren().remove(instructionsBox);
-        });
+        });*/
 
         instructions = new Label(INSTRUCTIONS);
         vBox.getChildren().addAll(instructions, backToMenu);
@@ -487,19 +441,20 @@ public class TetrisGame extends Application {
         vBox.setStyle("-fx-background-color: #f5f5f5");
 
         HighScore[] highScores = HighScore.getHighScores();
-        
+
         String top10 = HighScore.hiscoreHeaderToString();
-        
+
         for (int i = 0; i < highScores.length; i++) {
             top10 += HighScore.rightPad(String.valueOf(i + 1) + ".", 4) + highScores[i].toString();
-            
+
         }
 
-        Button backToMenu = new Button("Takaisin valikkoon");
+        Button backToMenu = backToMenuButton(vBox);
+   /*             new Button("Takaisin valikkoon");
         backToMenu.setOnAction((event) -> {
             stackPane.getChildren().remove(hiscoresBox);
         });
-
+*/
         hiscoreLabel = new Label(top10);
         hiscoreLabel.setFont(Font.font("monospace", 12));
         vBox.getChildren().addAll(hiscoreLabel, backToMenu);
@@ -517,8 +472,55 @@ public class TetrisGame extends Application {
                     "Tetris", JOptionPane.INFORMATION_MESSAGE);
             if (name != null) {
                 HighScore.addHighScore(new HighScore(level, lines, score,
-                    (name.length() > 10) ? name.substring(0, 10) : name));
+                        (name.length() > 10) ? name.substring(0, 10) : name));
             }
         }
+    }
+
+    private Arc setHalfCircle() {
+        Arc halfCircle = new Arc((double) PIXEL / 2.0, (double) PIXEL / 2.0,
+                (double) PIXEL / 2.0, (double) PIXEL / 8.0, 0.0f, 180.0f);
+        halfCircle.setOpacity(0.05);
+        halfCircle.setFill(Color.WHITE);
+        halfCircle.setType(ArcType.ROUND);
+        halfCircle.setRotate(180.0);
+
+        return halfCircle;
+    }
+
+    private void setShades(boolean b) {
+        if (b) {
+            topShade.setOpacity(0.5);
+            topShade.setFill(Color.WHITE);
+            bottomShade.setOpacity(0.5);
+            bottomShade.setFill(Color.BLACK);
+        } else {
+            topShade.setOpacity(0.1);
+            topShade.setFill(Color.BLACK);
+            bottomShade.setOpacity(0.25);
+            bottomShade.setFill(Color.BLACK);
+        }
+
+        topShade.getPoints().addAll(new Double[]{
+            0.0, 0.0, (double) PIXEL, 0.0, (double) PIXEL - shadeThick,
+            shadeThick, shadeThick, shadeThick, shadeThick,
+            (double) PIXEL - shadeThick, 0.0, (double) PIXEL
+        });
+        bottomShade.getPoints().addAll(new Double[]{
+            0.0, (double) PIXEL, (double) PIXEL, (double) PIXEL,
+            (double) PIXEL, 0.0, (double) PIXEL - shadeThick,
+            shadeThick, (double) PIXEL - shadeThick,
+            (double) PIXEL - shadeThick, shadeThick,
+            (double) PIXEL - shadeThick
+        });
+    }
+
+    private Button backToMenuButton(VBox vbox) {
+        Button backToMenu = new Button("Takaisin valikkoon");
+        backToMenu.setOnAction((event) -> {
+            stackPane.getChildren().remove(vbox);
+            stackPane.getChildren().add(pauseCenter);
+        });
+        return backToMenu;
     }
 }

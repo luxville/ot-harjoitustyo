@@ -37,25 +37,20 @@ public class Shape {
         if (type != 7 && type != 4 && type != 3 && type != 1) {
             this.points.add(new Point(3, 0, type));
         }
-
         if (type != 6 && type != 1) {
             this.points.add(new Point(4, 0, type));
         }
-
         if (type != 6 && type != 5 && type != 3) {
             this.points.add(new Point(5, 0, type));
         }
-
         if (type == 2) {
             this.points.add(new Point(6, 0, type));
         } else {
             this.points.add(new Point(4, 1, type));
         }
-
         if (type != 4 && type != 2) {
             this.points.add(new Point(5, 1, type));
         }
-
         if (type == 6 || type == 4 || type == 3 || type == 1) {
             this.points.add(new Point(3, 1, type));
         }

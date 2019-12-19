@@ -31,7 +31,7 @@ public class ShapeTest {
     }
 
     @Test
-    public void create_points() {
+    public void createPoints() {
         Shape l = new Shape(1);
         Shape i = new Shape(2);
         Shape t = new Shape(3);

@@ -36,25 +36,21 @@ public class Shape {
      * pelialueen ylälaitaan.
      */
     private void createPoints() {
-        if (type != 7 && type != 4 && type != 3 && type != 1) {
-            this.points.add(new Point(3, 0, type));
-        }
-        if (type != 6 && type != 1) {
-            this.points.add(new Point(4, 0, type));
-        }
-        if (type != 6 && type != 5 && type != 3) {
-            this.points.add(new Point(5, 0, type));
-        }
-        if (type == 2) {
-            this.points.add(new Point(6, 0, type));
-        } else {
-            this.points.add(new Point(4, 1, type));
-        }
-        if (type != 4 && type != 2) {
-            this.points.add(new Point(5, 1, type));
-        }
-        if (type == 6 || type == 4 || type == 3 || type == 1) {
-            this.points.add(new Point(3, 1, type));
+        switch (type) {
+            case 1:
+                createL();
+            case 2:
+                createI();
+            case 3:
+                createT();
+            case 4:
+                createS();
+            case 5:
+                createZ();
+            case 6:
+                createJ();
+            case 7:
+                createO();
         }
     }
 
@@ -168,5 +164,33 @@ public class Shape {
                 point.setLocation(2 - (point.getY() - lowY) + lowX, (point.getX() - lowX) + lowY);
             }
         }
+    }
+
+    private void createL() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void createI() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void createT() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void createS() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void createZ() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void createJ() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void createO() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

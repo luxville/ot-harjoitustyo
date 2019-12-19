@@ -39,16 +39,22 @@ public class Shape {
         switch (type) {
             case 1:
                 createL();
+                break;
             case 2:
                 createI();
+                break;
             case 3:
                 createT();
+                break;
             case 4:
                 createS();
+                break;
             case 5:
                 createZ();
+                break;
             case 6:
                 createJ();
+                break;
             case 7:
                 createO();
         }
@@ -167,30 +173,73 @@ public class Shape {
     }
 
     private void createL() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.points.add(new Point(5, 0, type));
+        this.points.add(new Point(4, 1, type));
+        this.points.add(new Point(5, 1, type));
+        this.points.add(new Point(3, 1, type));
     }
 
     private void createI() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.points.add(new Point(3, 0, type));
+        this.points.add(new Point(4, 0, type));
+        this.points.add(new Point(5, 0, type));
+        this.points.add(new Point(6, 0, type));
+
     }
 
     private void createT() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.points.add(new Point(4, 0, type));
+        this.points.add(new Point(4, 1, type));
+        this.points.add(new Point(5, 1, type));
+        this.points.add(new Point(3, 1, type));
+
     }
 
+    /*if (type != 7 && type != 4 && type != 3 && type != 1) {
+            this.points.add(new Point(3, 0, type));
+        }
+        if (type != 6 && type != 1) {
+            this.points.add(new Point(4, 0, type));
+        }
+        if (type != 6 && type != 5 && type != 3) {
+            this.points.add(new Point(5, 0, type));
+        }
+        if (type == 2) {
+            this.points.add(new Point(6, 0, type));
+        } else {
+            this.points.add(new Point(4, 1, type));
+        }
+        if (type != 4 && type != 2) {
+            this.points.add(new Point(5, 1, type));
+        }
+        if (type == 6 || type == 4 || type == 3 || type == 1) {
+            this.points.add(new Point(3, 1, type));
+        }*/
     private void createS() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.points.add(new Point(4, 0, type));
+        this.points.add(new Point(5, 0, type));
+        this.points.add(new Point(4, 1, type));
+        this.points.add(new Point(3, 1, type));
     }
 
     private void createZ() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.points.add(new Point(3, 0, type));
+        this.points.add(new Point(4, 0, type));
+        this.points.add(new Point(4, 1, type));
+        this.points.add(new Point(5, 1, type));
     }
 
     private void createJ() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.points.add(new Point(3, 0, type));
+        this.points.add(new Point(4, 1, type));
+        this.points.add(new Point(5, 1, type));
+        this.points.add(new Point(3, 1, type));
     }
 
     private void createO() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.points.add(new Point(4, 0, type));
+        this.points.add(new Point(5, 0, type));
+        this.points.add(new Point(4, 1, type));
+        this.points.add(new Point(5, 1, type));
     }
 }

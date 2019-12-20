@@ -61,10 +61,10 @@ public class HighScore implements Serializable {
     }
 
     /**
-     * Metodi vertailee parametrinaan saamansa tuloksen pisteitä tarkasteltavana
-     * olevan tuloksen pisteisiin.
+     * Vertailee parametrinaan saamansa tuloksen pisteitä tarkasteltavana olevan
+     * tuloksen pisteisiin.
      *
-     * @param highScore tulos, johon sisältyvät saavutetut pisteet, taso, 
+     * @param highScore tulos, johon sisältyvät saavutetut pisteet, taso,
      * tuhotut rivit ja pelaajan antama nimi.
      *
      * @return parametrina saadun ollessa pienempi palauttaa positiivisen, yhtä
@@ -74,6 +74,10 @@ public class HighScore implements Serializable {
         return new Integer(this.score).compareTo(highScore.score);
     }
 
+    /**
+     * Luo parhaiden tulosten listan sisältävän tiedoston sisältämään pelkästään
+     * tuloksia 0 sisältäväksi tuloslistaksi.
+     */
     private static void initializeFile() {
         HighScore[] highScores = {new HighScore(0, 0, 0, " "), new HighScore(0, 0, 0, " "),
             new HighScore(0, 0, 0, " "), new HighScore(0, 0, 0, " "), new HighScore(0, 0, 0, " "),
@@ -93,9 +97,9 @@ public class HighScore implements Serializable {
     }
 
     /**
-     * Metodi yrittää avata tiedoston, jossa tuloslista sijaitsee. Mikäli
-     * kyseistä tiedostoa ei löydy, se luodaan. Kun tiedosto on olemassa,
-     * haetaan siellä oleva tuloslista.
+     * Avaa tiedoston, jossa tuloslista sijaitsee. Mikäli kyseistä tiedostoa ei
+     * löydy, kutsutaan tyhjän tuloslistan luovaa metodia. Kun tiedosto on
+     * olemassa, haetaan siellä oleva tuloslista.
      *
      * @return tuloslista tuloksista koostuvana taulukkona
      */
@@ -116,11 +120,12 @@ public class HighScore implements Serializable {
     }
 
     /**
-     * Metodi hakee parhaat tulokset tiedostosta, vertailee parametrinaan saamaansa 
-     * tulosta olemassaolevaan tuloslistaan ja sijoittaa tuloksen oikeaan kohtaan
-     * tuloslistalla. Sen jälkeen metodi tallentaa päivitetyn tuloslistan tiedostoon.
-     * 
-     * @param highScore     tulos, johon sisältyvät saavutetut pisteet, taso, 
+     * Hakee parhaat tulokset tiedostosta, vertailee parametrinaan saamaansa
+     * tulosta olemassaolevaan tuloslistaan ja sijoittaa tuloksen oikeaan
+     * kohtaan tuloslistalla. Tallentaa lopuksi päivitetyn tuloslistan
+     * tiedostoon.
+     *
+     * @param highScore tulos, johon sisältyvät saavutetut pisteet, taso,
      * tuhotut rivit ja pelaajan antama nimi.
      */
     public static void addHighScore(HighScore highScore) {
@@ -145,10 +150,10 @@ public class HighScore implements Serializable {
     }
 
     /**
-     * Metodi luo tuloksesta tulostettavan version, jossa ovat nimi, pisteet,
-     * taso ja tuhotut rivit.
-     * 
-     * @return  tulos merkkijonona
+     * Luo tuloksesta tulostettavan version, jossa ovat nimi, pisteet, taso ja
+     * tuhotut rivit.
+     *
+     * @return tulos merkkijonona
      */
     @Override
     public String toString() {
@@ -161,9 +166,9 @@ public class HighScore implements Serializable {
     }
 
     /**
-     * Metodi luo tuloslistaa varten otsikon ja seliterivin.
-     * 
-     * @return  tulostaulun otsikko ja seliterivi merkkijonona
+     * Luo otsikon ja seliterivin tuloslistaa varten.
+     *
+     * @return tulostaulun otsikko ja seliterivi merkkijonona
      */
     public static String hiscoreHeaderToString() {
         String hiscoresHeader = "TOP 10\n\n" + rightPad(" ", 4) + rightPad("NIMI", 10) + rightPad("PISTEET", 8)
@@ -173,14 +178,14 @@ public class HighScore implements Serializable {
     }
 
     /**
-     * Metodi luo merkkijonosta oikeaan reunaan tasoittuvan korkeintaan 10 merkkiä
+     * Luo merkkijonosta oikeaan reunaan tasoittuvan korkeintaan 10 merkkiä
      * pitkän merkkijonon tehden merkkijonosta halutun pituisen.
-     * 
-     * @param string    merkkijono, jota muokataan
-     * 
-     * @param length    haluttu merkkijonon pituus
-     * 
-     * @return          halutunmittaiseksi muokattu merkkijono
+     *
+     * @param string merkkijono, jota muokataan
+     *
+     * @param length haluttu merkkijonon pituus
+     *
+     * @return halutunmittaiseksi muokattu merkkijono
      */
     public static String rightPad(String string, int length) {
         if (string.length() > 10) {

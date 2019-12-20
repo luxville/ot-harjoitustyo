@@ -82,8 +82,8 @@ public class Shape {
     }
 
     /**
-     * Palikan pisteille lasketaan sen tyypin perusteella kulloinkin oikea
-     * seuraava tila.
+     * Laskee palikan pisteille sen tyypin perusteella kulloinkin oikean
+     * seuraavan tilan.
      */
     public void rotate() {
         lowX = 100;
@@ -107,7 +107,7 @@ public class Shape {
     }
 
     /**
-     * Vuorossa olevaa palikkaa käännetään.
+     * Kääntää parhaillaan pelattavana olevaa palikkaa.
      *
      * @return lista palikan pisteistä sen kääntämisen jälkeen
      */

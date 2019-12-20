@@ -42,6 +42,7 @@ public class Point {
      * Muuttaa pisteen x-koordinaattia.
      *
      * @param mod kertoo uuden x-koordinaatin suhteessa nykyiseen
+     * x-koordinaattiin
      */
     public void modX(int mod) {
         x += mod;
@@ -59,19 +60,20 @@ public class Point {
      * Muuttaa pisteen y-koordinaattia.
      *
      * @param mod kertoo uuden y-koordinaatin suhteessa nykyiseen
+     * y-koordinaattiin
      */
     public void modY(int mod) {
         y += mod;
     }
 
     /**
-     * Tarkistaa, onko parametrina saatu olio Point-tyyppinen. Jos 
-     * näin on, tarkistaa onko parametrina saatu Point-olio sama piste kuin
+     * Tarkistaa, onko parametrina saatu olio Point-tyyppinen. Jos näin on,
+     * tarkistaa onko parametrina saatu Point-olio sama piste kuin
      * tarkasteltavana oleva.
-     * 
-     * @param obj   olio, jota epäillään Point-olioksi
-     * 
-     * @return      totuusarvo siitä, ovatko parametrina saatu olio ja 
+     *
+     * @param obj olio, jota epäillään Point-olioksi
+     *
+     * @return totuusarvo siitä, ovatko parametrina saatu olio ja
      * tarkasteltavana oleva piste samoja
      */
     @Override
@@ -84,7 +86,7 @@ public class Point {
 
     /**
      * Palauttaa tarkasteltavan Point-olion koordinaatit ja tyypin.
-     * 
+     *
      * @return merkkijono, jossa ovat pisteen x- ja y-koordinaatit sekä tyyppi
      */
     @Override

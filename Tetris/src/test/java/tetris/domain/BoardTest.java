@@ -103,4 +103,24 @@ public class BoardTest {
         assertEquals(300, board2.calculateCurrentScore(3));
         assertEquals(1000, board2.calculateCurrentScore(4));
     }
+    
+    @Test
+    public void updateSpeedTest() {
+        board2 = new Board(2);
+        board2.setLevel(3);
+        board2.updateSpeed();
+        assertEquals(550, board2.getTimePerBlock());
+        board2.setLevel(9);
+        board2.updateSpeed();
+        assertEquals(100, board2.getTimePerBlock());
+        board2.setLevel(10);
+        board2.updateSpeed();
+        assertEquals(83, board2.getTimePerBlock());
+        board2.setLevel(20);
+        board2.updateSpeed();
+        assertEquals(33, board2.getTimePerBlock());
+        board2.setLevel(29);
+        board2.updateSpeed();
+        assertEquals(16, board2.getTimePerBlock());
+    }
 }

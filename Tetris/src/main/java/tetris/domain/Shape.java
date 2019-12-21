@@ -61,6 +61,10 @@ public class Shape {
         }
     }
 
+    public int getRotation() {
+        return this.rotation;
+    }
+    
     /**
      * Siirtää palikkaa vasemmalle.
      */

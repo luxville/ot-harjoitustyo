@@ -154,9 +154,57 @@ public class ShapeTest {
 
     @Test
     public void getShapeType() {
-
         assertThat(1, equalTo(l.getType()));
         assertThat(5, equalTo(z.getType()));
         assertThat(7, equalTo(o.getType()));
+    }
+    
+    @Test
+    public void rotateTypeL() {
+        for (Point lPoint : lPoints) {
+            lPoint.modY(3);
+        }
+        l.rotate();
+        assertThat(1, equalTo(l.getRotation()));
+        l.rotate();
+        assertThat(2, equalTo(l.getRotation()));
+        l.rotate();
+        assertThat(3, equalTo(l.getRotation()));
+        l.rotate();
+        assertThat(0, equalTo(l.getRotation()));
+        /*assertThat(lPoints.get(0), equalTo(new Point(4, 0)));
+        assertThat(lPoints.get(1), equalTo(new Point(3, 1)));
+        assertThat(lPoints.get(2), equalTo(new Point(4, 1)));
+        assertThat(lPoints.get(3), equalTo(new Point(2, 1)));*/
+    }
+    
+   @Test
+    public void rotateTypeI() {
+        for (Point iPoint : iPoints) {
+            iPoint.modY(3);
+        }
+        i.rotate();
+        assertThat(iPoints.get(0), equalTo(new Point(5, 2)));
+        assertThat(iPoints.get(1), equalTo(new Point(5, 3)));
+        assertThat(iPoints.get(2), equalTo(new Point(5, 4)));
+        assertThat(iPoints.get(3), equalTo(new Point(5, 5)));
+        i.rotate();
+        assertThat(iPoints.get(0), equalTo(new Point(3, 4)));
+        assertThat(iPoints.get(1), equalTo(new Point(4, 4)));
+        assertThat(iPoints.get(2), equalTo(new Point(5, 4)));
+        assertThat(iPoints.get(3), equalTo(new Point(6, 4)));
+        i.moveRight();
+        i.moveRight();
+        i.moveRight();
+        i.rotate();
+        assertThat(iPoints.get(0), equalTo(new Point(7, 2)));
+        assertThat(iPoints.get(1), equalTo(new Point(7, 3)));
+        assertThat(iPoints.get(2), equalTo(new Point(7, 4)));
+        assertThat(iPoints.get(3), equalTo(new Point(7, 5)));
+        i.rotate();
+        assertThat(iPoints.get(0), equalTo(new Point(6, 3)));
+        assertThat(iPoints.get(1), equalTo(new Point(7, 3)));
+        assertThat(iPoints.get(2), equalTo(new Point(8, 3)));
+        assertThat(iPoints.get(3), equalTo(new Point(9, 3)));
     }
 }

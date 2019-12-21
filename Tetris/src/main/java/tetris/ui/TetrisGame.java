@@ -255,7 +255,7 @@ public class TetrisGame extends Application {
             paint();
         });
         shapeTransition.getChildren().add(pauseTransition);
-        shapeTransition.setCycleCount(Timeline.INDEFINITE);
+        //shapeTransition.setCycleCount(Timeline.INDEFINITE);
         shapeTransition.play();
     }
 

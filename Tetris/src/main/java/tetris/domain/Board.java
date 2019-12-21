@@ -45,7 +45,6 @@ public class Board {
         this.timePerBlock = 800;
         this.points = new ArrayList<Point>();
         this.rand = new Random();
-
         createCurrentShape();
     }
     
@@ -57,7 +56,6 @@ public class Board {
         this.timePerBlock = 800;
         this.points = new ArrayList<Point>();
         this.rand = new Random();
-
         createCurrentShape(num);
     }
 
@@ -208,7 +206,6 @@ public class Board {
      */
     public boolean canRotate() {
         List<Point> rotated = currentShape.getRotatePoints();
-
         for (Point point : rotated) {
             if (point.getX() >= WIDTH || point.getY() >= HEIGHT || point.getX() < 0
                     || points.contains(point)) {
@@ -300,7 +297,6 @@ public class Board {
      */
     public int calculateCurrentScore(int num) {
         int base = 40;
-
         if (num == 2) {
             base = 100;
         } else if (num == 3) {
@@ -308,7 +304,6 @@ public class Board {
         } else if (num == 4) {
             base = 1000;
         }
-
         return base * (level + 1);
     }
 
@@ -322,15 +317,12 @@ public class Board {
      */
     public List<Point> getPoints() {
         List<Point> points = new ArrayList<Point>();
-
         points.addAll(this.points);
         points.addAll(currentShape.getPoints());
-
         Set<Point> set = new HashSet<Point>();
         set.addAll(points);
         points.clear();
         points.addAll(set);
-
         return points;
     }
 
@@ -339,7 +331,6 @@ public class Board {
      */
     public void updateSpeed() {
         double baseFrame = 48.0;
-
         if (-1 < level && level < 9) {
             timePerBlock = (int) (((baseFrame - (level * 5.0)) / 60.0) * 1000.0);
         } else if (level == 9) {
@@ -353,23 +344,6 @@ public class Board {
         }
     }
 
-    /*    public void getStatus() {
-        StringBuffer sb = new StringBuffer();
-
-        sb.append(toString());
-        sb.append("--- Border ---\n");
-        sb.append("Left " + closeToLeftBorder() + "\n");
-        sb.append("Right " + closeToRightBorder() + "\n");
-        sb.append("Bottom " + closeToBottomBorder() + "\n");
-        sb.append("--- Points ---\n");
-        sb.append("Left " + hasPointsLeft() + "\n");
-        sb.append("Right " + hasPointsRight() + "\n");
-        sb.append("Bottom " + hasPointsDown() + "\n");
-        sb.append("--- Rotate ---\n");
-        sb.append(canRotate());
-
-        System.out.println(sb.toString());
-    }*/
     public int getNumClearedLines() {
         return numClearedLines;
     }
@@ -392,7 +366,7 @@ public class Board {
 
     /**
      * Muodostaa ensin kokonaislukutaulukon pelialueesta pisteiden tyyppien
-     * mukaan numeroituna. Muodostaa itten tästä kokonaislukutaulukosta
+     * mukaan numeroituna. Muodostaa sitten tästä kokonaislukutaulukosta
      * merkkijonon.
      *
      * @return pelialueen pisteet merkkijonona tyypin mukaisesti numeroituna
@@ -403,16 +377,13 @@ public class Board {
         for (Point point : points) {
             board[point.getY()][point.getX()] = point.getType();
         }
-
         for (Point point : currentShape.getPoints()) {
             board[point.getY()][point.getX()] = currentShape.getType();
         }
-
         String str = "";
         for (int[] is : board) {
             str += Arrays.toString(is) + "\n";
         }
-
         return str;
     }
 

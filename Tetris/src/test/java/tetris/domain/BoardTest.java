@@ -67,14 +67,5 @@ public class BoardTest {
         assertFalse(board.canRotate());
         assertTrue(board.closeToBottomBorder());
         board.moveDown();
- /*       board.createCurrentShape(2);
-        board.moveDown();
-        board.moveDown();
-        board.moveDown();
-        assertTrue(board.canRotate());
-        for (int k = 0; k < 4; k++) {
-            board.moveRight();            
-        }
-        assertFalse(board.canRotate());*/
     }
 }

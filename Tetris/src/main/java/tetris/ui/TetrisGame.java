@@ -351,11 +351,9 @@ public class TetrisGame extends Application {
 
     private VBox hiscores() {
         VBox vBox = new VBox();
-        //vBox.getChildren().clear();
         vBox.setSpacing(10);
         vBox.setStyle("-fx-background-color: #f5f5f5");
         Text text = new Text();
-        text.setText(null);
         HighScore[] highScores = HighScore.getHighScores();
         String top10 = "";
         top10 = HighScore.hiscoreHeaderToString();

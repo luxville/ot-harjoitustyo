@@ -39,8 +39,6 @@ public class Shape {
             createL();
         } else if (this.type == 2) {
             createI();
-        } else if (this.type == 2) {
-            createI();
         } else if (this.type == 3) {
             createT();
         } else if (this.type == 4) {

@@ -39,7 +39,6 @@ public class Board {
 
     public Board() {
         this.gameOver = false;
-        // this.gravity = true;
         this.numClearedLines = 0;
         this.level = 0;
         this.score = 0;
@@ -48,6 +47,18 @@ public class Board {
         this.rand = new Random();
 
         createCurrentShape();
+    }
+    
+    public Board(int num) {
+        this.gameOver = false;
+        this.numClearedLines = 0;
+        this.level = 0;
+        this.score = 0;
+        this.timePerBlock = 800;
+        this.points = new ArrayList<Point>();
+        this.rand = new Random();
+
+        createCurrentShape(num);
     }
 
     /**
@@ -61,6 +72,22 @@ public class Board {
         if (currentShape != null) {
             points.addAll(currentShape.getPoints());
         }
+        currentShape = new Shape(num);
+    }
+
+    /**
+     * Luo halutun palikan testejä varten.
+     *
+     * @param num kokonaisluku, määrittää seuraavana pelattavan palikan tyypin.
+     * 1 = L, 2 = I, 3 = T, 4 = S, 5 = Z, 6 = J ja 7 = O
+     */
+    public void createCurrentShape(int num) {
+        if (num < 0 || num >= 7) {
+            return;
+        }
+        if (currentShape != null) {
+            points.addAll(currentShape.getPoints());
+        }
         currentShape = new Shape(num + 1);
     }
 
@@ -70,7 +97,7 @@ public class Board {
      * @return totuusarvo siitä, onko tarkasteltavan pisteen alapuolella jo
      * jokin toinen piste.
      */
-    private boolean hasPointsDown() {
+    public boolean hasPointsDown() {
         for (Point point : currentShape.getPoints()) {
             if (points.contains(new Point(point.getX(), point.getY() + 1))) {
                 return true;
@@ -86,7 +113,7 @@ public class Board {
      * @return totuusarvo siitä, onko tarkasteltavan pisteen oikealla puolella
      * jo jokin toinen piste.
      */
-    private boolean hasPointsRight() {
+    public boolean hasPointsRight() {
         for (Point point : currentShape.getPoints()) {
             if (points.contains(new Point(point.getX() + 1, point.getY()))) {
                 return true;
@@ -102,7 +129,7 @@ public class Board {
      * @return totuusarvo siitä, onko tarkasteltavan pisteen vasemmalla puolella
      * jo jokin toinen piste.
      */
-    private boolean hasPointsLeft() {
+    public boolean hasPointsLeft() {
         for (Point point : currentShape.getPoints()) {
             if (points.contains(new Point(point.getX() - 1, point.getY()))) {
                 return true;
@@ -117,7 +144,7 @@ public class Board {
      * @return totuusarvo siitä, onko tarkasteltava piste pelialueen ylimmällä
      * rivillä.
      */
-    private boolean closeToTopBorder() {
+    public boolean closeToTopBorder() {
         for (Point point : currentShape.getPoints()) {
             if (point.getY() == 0) {
                 return true;
@@ -132,7 +159,7 @@ public class Board {
      * @return totuusarvo siitä, onko tarkasteltavan pisteen vasemmalla puolella
      * pelialueen vasen reuna.
      */
-    private boolean closeToLeftBorder() {
+    public boolean closeToLeftBorder() {
         for (Point point : currentShape.getPoints()) {
             if (point.getX() == 0) {
                 return true;
@@ -157,12 +184,13 @@ public class Board {
     }
 
     /**
-     * Tarkistaa, onko tarkasteltava piste lähellä pelialueen alareunaa.
+     * Tarkistaa, onko jokin tarkasteltavan palikan piste lähellä pelialueen
+     * alareunaa.
      *
      * @return totuusarvo siitä, onko tarkasteltavan pisteen alapuolella
      * pelialueen alareuna.
      */
-    private boolean closeToBottomBorder() {
+    public boolean closeToBottomBorder() {
         for (Point point : currentShape.getPoints()) {
             if (point.getY() == HEIGHT - 1) {
                 return true;
@@ -178,7 +206,7 @@ public class Board {
      * nykyisessä sijainnissaan pelialueen raunojen tai pelialueelta ennestään
      * varattujen ruutujen sitä estämättä.
      */
-    private boolean canRotate() {
+    public boolean canRotate() {
         List<Point> rotated = currentShape.getRotatePoints();
 
         for (Point point : rotated) {
@@ -247,14 +275,14 @@ public class Board {
      * putoaminen jatkuu. Lopuksi tarkistaa pelaajan tason ja päivittää
      * palikoiden putoamisnopeuden tasoa vastaavaksi.
      */
-    private void removeLines() {
+    public void removeLines() {
         do {
             removeLinesSetup();
             if (allPoints.size() != 0) {
                 countFullLines();
             }
             if (fullLines.size() != 0) {
-                fullinesSixeNotZero();
+                fullinesSizeNotZero();
             }
         } while (gravityTriggered);
         level = numClearedLines / 10;
@@ -270,7 +298,7 @@ public class Board {
      * @return kokonaisluku, nykyisellä palikalla tuhotuista riveistä tulevat
      * pisteet
      */
-    private int calculateCurrentScore(int num) {
+    public int calculateCurrentScore(int num) {
         int base = 40;
 
         if (num == 2) {
@@ -309,7 +337,7 @@ public class Board {
     /**
      * Päivittää palikoiden putoamisnopeuden saavutetun tason mukaan.
      */
-    private void updateSpeed() {
+    public void updateSpeed() {
         double baseFrame = 48.0;
 
         if (-1 < level && level < 9) {
@@ -397,7 +425,7 @@ public class Board {
      *
      * @return totuusarvo, jatkuuko palikan putoaminen
      */
-    private boolean continueMoveDown(int i) {
+    public boolean continueMoveDown(int i) {
         for (int j = 0; j < points.size(); j++) {
             if (points.get(j).getX() == i && points.get(j).getY() <= mostBottomLine) {
                 points.get(j).modY(numOfEmpty);
@@ -411,7 +439,7 @@ public class Board {
      * Tarkistaa, onko jokin pelialueen riveistä täysi ja lisää niiden
      * lukumäärän täysien rivien laskuriin.
      */
-    private void countFullLines() {
+    public void countFullLines() {
         for (int i = 0; i < HEIGHT; i++) {
             boolean full = true;
             row:
@@ -431,7 +459,7 @@ public class Board {
      * Alustaa muuttujat täydet rivit poistavaa ja niistä saatavat pisteet
      * laskevaa metodia varten.
      */
-    private void removeLinesSetup() {
+    public void removeLinesSetup() {
         gravityTriggered = false;
         fullLines = new ArrayList<Integer>(HEIGHT);
         allPoints = getPoints();
@@ -443,7 +471,7 @@ public class Board {
      * Päivittää tuhottujen rivien määrän ja pisteet sekä tiedon alimmasta
      * rivistä. Poistaa täydet rivit pelialueelta
      */
-    private void fullinesSixeNotZero() {
+    public void fullinesSizeNotZero() {
         numClearedLines += fullLines.size();
         score += calculateCurrentScore(fullLines.size());
         for (int i : fullLines) {
@@ -467,7 +495,7 @@ public class Board {
      * Laskee alapuolella olevan vapaan tilan määrän ja tarkistaa mahtuuko
      * palikka vielä putoamaan alemmas.
      */
-    private void mostBottomLineBoardNotEmpty() {
+    public void mostBottomLineBoardNotEmpty() {
         allPoints = getPoints();
         for (int i = 0; i < WIDTH; i++) {
             for (int j = mostBottomLine + 1; j < HEIGHT; j++) {

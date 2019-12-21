@@ -86,7 +86,7 @@ public class Board {
         if (currentShape != null) {
             points.addAll(currentShape.getPoints());
         }
-        currentShape = new Shape(num + 1);
+        currentShape = new Shape(num);
     }
 
     /**

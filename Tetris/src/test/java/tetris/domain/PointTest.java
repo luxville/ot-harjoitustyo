@@ -50,8 +50,9 @@ Point typedPoint;
     }
     
     @Test
-    public void notPoint() {
+    public void isOrNotPoint() {
         Shape shape = new Shape(7);
         assertNotEquals(point, shape);
+        assertEquals(point, typedPoint);
     }
 }

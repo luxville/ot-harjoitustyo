@@ -1,5 +1,6 @@
 package tetris.domain;
 
+import java.io.FileWriter;
 import java.util.Arrays;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -7,11 +8,20 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
+import org.junit.rules.TemporaryFolder;
 
 public class HighScoreTest {
 
     HighScore highScore;
     HighScore[] highScores;
+
+    @Rule
+    public TemporaryFolder tempFolder = new TemporaryFolder();
+
+    //@Rule
+    //public ExpectedException thrown = ExpectedException.none();
 
     @Before
     public void setUp() {
@@ -30,17 +40,19 @@ public class HighScoreTest {
         assertEquals(1000, highScore.getScore());
     }
 
-    /*@Test
-    public void testInitializeFile() {
+    @Test
+    public void testHighScoresDatFile() {
         HighScore[] testList = HighScore.getHighScores();
-assertThat(true, Arrays.equals(highScores, HighScore.getHighScores()));
-    }*/
-    
+        for (int i = 0; i < testList.length; i++) {
+            assertEquals(highScores[i].toString(), testList[i].toString());
+        }
+    }
+
     @Test
     public void hiscoreHeader() {
         assertEquals("TOP 10\n\n           NIMI  PISTEET  TASO  RIVIT \n\n", HighScore.hiscoreHeaderToString());
     }
-    
+
     @Test
     public void rightPadTest() {
         String test1 = "12345678901234567890";
@@ -48,7 +60,7 @@ assertThat(true, Arrays.equals(highScores, HighScore.getHighScores()));
         assertEquals("1234567890 ", HighScore.rightPad(test1, 10));
         assertEquals("    123456 ", HighScore.rightPad(test2, 10));
     }
-    
+
     @Test
     public void toStringTest() {
         assertEquals("testplayer     1000     3     13 \n", highScore.toString());

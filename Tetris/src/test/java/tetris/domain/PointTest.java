@@ -54,5 +54,7 @@ Point typedPoint;
         Shape shape = new Shape(7);
         assertNotEquals(true, point.equals(shape));
         assertEquals(true, point.equals(typedPoint));
+        point.modX(1);
+        assertEquals(false, point.equals(typedPoint));
     }
 }

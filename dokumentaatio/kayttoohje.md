@@ -12,9 +12,9 @@ Tämän jälkeen näytölle avautuu aloitusnäkymänä valikko, josta voi valita
 
 <img src="https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/valikko.png">
 
-**Jatka peliä** jatkaa käynnissä olevaa peliä. Käytännössä vielä nykyisellä ohjelmaversiolla uuttakin (kuvassa valikon ollessa näkyvissä ensimmäinen palikka näkyy taustalla) tai jo päättynyttä peliä voi jatkaa. Riittävän hyvällä tuloksella voi niin halutessaan siis täyttää tuloslistan kaikki saavutettua tulosta huonommat sijat.
+**Jatka peliä** jatkaa käynnissä olevaa peliä. Uusi peli käynnistyy taustalle, kun ohjelma käynnistetään (kuvassa valikon ollessa näkyvissä ensimmäinen palikka näkyy taustalla), joten peliä voi jatkaa kaikissa muissa tilanteissa paitsi päättyneen pelin jälkeen.
 
-**Uusi peli** aloittaa uuden pelin, jossa siis ensimmäisenä taustalla näkyvä palikka vaihtuu joko muuksi tai samaksi. Pelialueen vasemmalla puolella yläreunassa näkyy pisteet, taso ja tuhotut rivit siihen mennessä.
+**Uusi peli** aloittaa uuden pelin, jossa siis ensimmäisenä taustalla näkyvä palikka vaihtuu joko muuksi tai samaksi. Pelialueen vasemmalla puolella yläreunassa näkyy siihen mennessä saavutetut pisteet, taso ja tuhotut rivit.
 
 <img src="https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/peli.png">
 
@@ -28,7 +28,7 @@ Pelin päätyttyä ilmoitetaan vielä saavutetut pisteet, taso ja tuhottujen riv
 
 <img src="https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/gameover.png">
 
-**Parhaat tulokset** näyttää 10 parasta tulosta. Tällä hetkellä näkyviin tuleva tuloslista päivittyy vain sulkemalla peli ja käynnistämällä se sitten uudelleen.
+**Parhaat tulokset** näyttää 10 parasta tulosta. Näkymä tuloslistasta päivittyy vain sulkemalla peli ja käynnistämällä se sitten uudelleen. Tulokset päivittyvät kuitenkin oikein.
 
 <img src="https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/top10.png">
 
@@ -38,11 +38,11 @@ Pelin päätyttyä ilmoitetaan vielä saavutetut pisteet, taso ja tuhottujen riv
 
 Käytössä on kaksi tapaa ohjata palikoita, joko näppäimillä *W*, *A*, *S* ja *D* tai nuolinäppäimillä. *Välilyönti* keskeyttää pelin. Palikat voivat liikkua vain vielä vapaana olevalla pelialueella. Näppäintoiminnot ovat seuraavat:
 
-*W tai nuoli ylös*: palikka kääntyy, jos sillä on tilaa kääntyä. Kääntyminen edellyttää, ettei palikka ole liian lähellä pelialueen reunaa tai jo pelialueella olevia palikoita. Palikkaa voi halutessaan kääntää niin monta kertaa kuin vain ehtii.
+*W tai nuoli ylös*: palikka kääntyy, jos sillä on tilaa kääntyä. Kääntyminen edellyttää, ettei palikka ole liian lähellä pelialueen reunaa tai jo pelialueella olevia palikoita. Palikkaa voi halutessaan kääntää niin monta kertaa kuin vain ehtii. Yksi näppäimenpainallus kääntää palikkaa yhden kerran.
 
-*A tai nuoli vasemmalle*: palikka siirtyy vasemmalle, ellei pelialueen reuna tai jo pelialueella olevat palikat estä siirtymistä.
+*A tai nuoli vasemmalle*: palikka siirtyy vasemmalle, ellei pelialueen reuna tai jo pelialueella olevat palikat estä siirtymistä. Pitämällä näppäintä pohjassa palikka siirtyy niin paljon vasemmalle kuin pelialueella on vapaata tilaa.
 
-*D tai nuoli oikealle*: palikka siirtyy oikealle, ellei pelialueen reuna tai jo pelialueella olevat palikat estä siirtymistä.
+*D tai nuoli oikealle*: palikka siirtyy oikealle, ellei pelialueen reuna tai jo pelialueella olevat palikat estä siirtymistä. Pitämällä näppäintä pohjassa palikka siirtyy niin paljon oikealle kuin pelialueella on vapaata tilaa.
 
 *S tai nuoli alas*: palikan putoaminen nopeutuu niin pitkään kuin näppäimen pitää painettuna.
 

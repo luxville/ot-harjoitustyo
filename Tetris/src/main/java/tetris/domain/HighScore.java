@@ -85,7 +85,6 @@ public class HighScore implements Serializable {
             new HighScore(0, 0, 0, " "), new HighScore(0, 0, 0, " ")};
 
         try {
-            System.out.println("Hi1");
             ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream("HighScores.dat"));
             o.writeObject(highScores);
             o.close();

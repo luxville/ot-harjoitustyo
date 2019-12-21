@@ -26,17 +26,6 @@ public class ShapeTest {
     List<Point> jPoints;
     List<Point> oPoints;
 
-    /*public ShapeTest() {
-    }*/
-
-    /*@BeforeClass
-    public static void setUpClass() {
-    }*/
-
-    /*@AfterClass
-    public static void tearDownClass() {
-    }*/
-
     @Before
     public void setUp() {
         l = new Shape(1);
@@ -55,10 +44,6 @@ public class ShapeTest {
         jPoints = j.getPoints();
         oPoints = o.getPoints();
     }
-
-    /*@After
-    public void tearDown() {
-    }*/
 
     @Test
     public void createPointsTest() {
@@ -158,7 +143,7 @@ public class ShapeTest {
         assertThat(5, equalTo(z.getType()));
         assertThat(7, equalTo(o.getType()));
     }
-    
+
     @Test
     public void rotateTypeL() {
         for (Point lPoint : lPoints) {
@@ -166,19 +151,23 @@ public class ShapeTest {
         }
         l.rotate();
         assertThat(1, equalTo(l.getRotation()));
+        assertThat(lPoints.get(0), equalTo(new Point(5, 5)));
+        assertThat(lPoints.get(1), equalTo(new Point(4, 4)));
+        assertThat(lPoints.get(2), equalTo(new Point(4, 5)));
+        assertThat(lPoints.get(3), equalTo(new Point(4, 3)));
         l.rotate();
         assertThat(2, equalTo(l.getRotation()));
         l.rotate();
         assertThat(3, equalTo(l.getRotation()));
+        assertThat(lPoints.get(0), equalTo(new Point(3, 3)));
+        assertThat(lPoints.get(1), equalTo(new Point(4, 4)));
+        assertThat(lPoints.get(2), equalTo(new Point(4, 3)));
+        assertThat(lPoints.get(3), equalTo(new Point(4, 5)));
         l.rotate();
         assertThat(0, equalTo(l.getRotation()));
-        /*assertThat(lPoints.get(0), equalTo(new Point(4, 0)));
-        assertThat(lPoints.get(1), equalTo(new Point(3, 1)));
-        assertThat(lPoints.get(2), equalTo(new Point(4, 1)));
-        assertThat(lPoints.get(3), equalTo(new Point(2, 1)));*/
     }
-    
-   @Test
+
+    @Test
     public void rotateTypeI() {
         for (Point iPoint : iPoints) {
             iPoint.modY(3);

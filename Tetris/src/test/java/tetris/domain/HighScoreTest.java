@@ -1,6 +1,10 @@
 package tetris.domain;
 
+import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -20,8 +24,8 @@ public class HighScoreTest {
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
 
-    //@Rule
-    //public ExpectedException thrown = ExpectedException.none();
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Before
     public void setUp() {
@@ -41,7 +45,8 @@ public class HighScoreTest {
     }
 
     @Test
-    public void testHighScoresDatFile() {
+    public void testHighScoresDatFile() throws IOException {
+        Path myTempDir = Files.createTempDirectory(null);
         HighScore[] testList = HighScore.getHighScores();
         for (int i = 0; i < testList.length; i++) {
             assertEquals(highScores[i].toString(), testList[i].toString());
@@ -50,7 +55,8 @@ public class HighScoreTest {
 
     @Test
     public void hiscoreHeader() {
-        assertEquals("TOP 10\n\n           NIMI  PISTEET  TASO  RIVIT \n\n", HighScore.hiscoreHeaderToString());
+        assertEquals("TOP 10\n\n           NIMI  PISTEET  TASO  RIVIT \n\n", 
+                HighScore.hiscoreHeaderToString());
     }
 
     @Test

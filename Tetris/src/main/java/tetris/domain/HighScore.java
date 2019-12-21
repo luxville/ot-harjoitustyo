@@ -20,6 +20,7 @@ public class HighScore implements Serializable {
     private int lines;
     private int score;
     private String name;
+    private static final String highScoreFileName = "HighScores.dat";
 
     public HighScore(int level, int lines, int score, String name) {
         this.level = level;
@@ -77,15 +78,18 @@ public class HighScore implements Serializable {
     /**
      * Luo parhaiden tulosten listan sisältävän tiedoston sisältämään pelkästään
      * tuloksia 0 sisältäväksi tuloslistaksi.
+     *
+     * @param filename merkkijono, muodostettavan tuloslistan sisältävän
+     * tiedoston nimi
      */
-    private static void initializeFile() {
+    private static void initializeFile(String filename) {
         HighScore[] highScores = {new HighScore(0, 0, 0, " "), new HighScore(0, 0, 0, " "),
             new HighScore(0, 0, 0, " "), new HighScore(0, 0, 0, " "), new HighScore(0, 0, 0, " "),
             new HighScore(0, 0, 0, " "), new HighScore(0, 0, 0, " "), new HighScore(0, 0, 0, " "),
             new HighScore(0, 0, 0, " "), new HighScore(0, 0, 0, " ")};
 
         try {
-            ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream("HighScores.dat"));
+            ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(filename));
             o.writeObject(highScores);
             o.close();
         } catch (FileNotFoundException e) {
@@ -103,11 +107,11 @@ public class HighScore implements Serializable {
      * @return tuloslista tuloksista koostuvana taulukkona
      */
     public static HighScore[] getHighScores() {
-        if (!new File("HighScores.dat").exists()) {
-            initializeFile();
+        if (!new File(highScoreFileName).exists()) {
+            initializeFile(highScoreFileName);
         }
         try {
-            ObjectInputStream o = new ObjectInputStream(new FileInputStream("HighScores.dat"));
+            ObjectInputStream o = new ObjectInputStream(new FileInputStream(highScoreFileName));
             HighScore[] highScores = (HighScore[]) o.readObject();
             o.close();
             return highScores;
@@ -139,7 +143,7 @@ public class HighScore implements Serializable {
             }
         }
         try {
-            ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream("HighScores.dat"));
+            ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(highScoreFileName));
             o.writeObject(highScores);
             o.close();
         } catch (FileNotFoundException e) {

@@ -22,4 +22,4 @@
 | 13.12. | 1    | Toiminnallisuuksien parantelua |
 | 19.12. | 6    | Checkstyle kuntoon ja JavaDoc valmiiksi |
 | 20.12. | 6    | Virheellisen koodin paikantamista ja korjailua |
-| Yht.   | 54   |
+| Yht.   | 66   |

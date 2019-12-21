@@ -79,6 +79,9 @@ public class BoardTest {
         assertTrue(board2.closeToLeftBorder());
         board2.moveRight();
         assertFalse(board2.closeToLeftBorder());
+        board2.moveLeft();
+        board2.moveLeft();
+        assertTrue(board2.closeToLeftBorder());
         /*assertFalse(board2.closeToRightBorder());
         for (int k = 0; k < 5; k++) {
             board2.moveRight();
@@ -90,5 +93,14 @@ public class BoardTest {
         board2.rotate();
         board2.moveDown();
         board2.moveDown();*/
+    }
+    
+    @Test
+    public void calculateCurrentScoreTest() {
+        board2 = new Board(2);
+        assertEquals(40, board2.calculateCurrentScore(1));
+        assertEquals(100, board2.calculateCurrentScore(2));
+        assertEquals(300, board2.calculateCurrentScore(3));
+        assertEquals(1000, board2.calculateCurrentScore(4));
     }
 }

@@ -19,8 +19,8 @@ Point typedPoint;
 
     @Test
     public void createPoint() {
-        assertEquals(point.x, 1);
-        assertEquals(point.y, 1);
+        assertEquals(1, point.x);
+        assertEquals(1, point.y);
     }
 
     @Test
@@ -52,7 +52,7 @@ Point typedPoint;
     @Test
     public void isOrNotPoint() {
         Shape shape = new Shape(7);
-        assertNotEquals(point, shape);
-        assertEquals(point, typedPoint);
+        assertNotEquals(true, point.equals(shape));
+        assertEquals(true, point.equals(typedPoint));
     }
 }

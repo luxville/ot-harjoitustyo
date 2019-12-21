@@ -38,7 +38,7 @@ Pelin päätyttyä ilmoitetaan vielä saavutetut pisteet, taso ja tuhottujen riv
 
 Käytössä on kaksi tapaa ohjata palikoita, joko näppäimillä *W*, *A*, *S* ja *D* tai nuolinäppäimillä. *Välilyönti* keskeyttää pelin. Palikat voivat liikkua vain vielä vapaana olevalla pelialueella. Näppäintoiminnot ovat seuraavat:
 
-*W tai nuoli ylös*: palikka kääntyy, jos sillä on tilaa kääntyä. Kääntyminen edellyttää, ettei palikka ole liian lähellä pelialueen reunaa tai jo pelialueella olevia palikoita. Palikkaa voi halutessaan kääntää niin monta kertaa kuin vain ehtii. Yksi näppäimenpainallus kääntää palikkaa yhden kerran.
+*W tai nuoli ylös*: palikka kääntyy, jos sillä on tilaa kääntyä. Kääntyminen edellyttää, ettei palikka ole liian lähellä pelialueen reunaa tai jo pelialueella olevia palikoita. Palikkaa voi halutessaan kääntää niin monta kertaa kuin vain ehtii.
 
 *A tai nuoli vasemmalle*: palikka siirtyy vasemmalle, ellei pelialueen reuna tai jo pelialueella olevat palikat estä siirtymistä. Pitämällä näppäintä pohjassa palikka siirtyy niin paljon vasemmalle kuin pelialueella on vapaata tilaa.
 

@@ -19,4 +19,7 @@
 | 09.12. | 5    | Parhaiden tulosten tallennus tiedostoon, pientä säätöä ja koodin siistimistä |
 | 10.12. | 5    | Tuloslista myös peliin näkyville. Käyttöohje, viikon release |
 |        | 3    | JavaDocin kanssa räpeltämistä |
-| Yht.   | 53
+| 13.12. | 1    | Toiminnallisuuksien parantelua |
+| 19.12. | 6    | Checkstyle kuntoon ja JavaDoc valmiiksi |
+| 20.12. | 6    | Virheellisen koodin paikantamista ja korjailua |
+| Yht.   | 66   |

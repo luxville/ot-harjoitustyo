@@ -32,6 +32,7 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -43,10 +44,8 @@ public class TetrisGame extends Application {
     private Board board;
     private boolean firstTry;
     private boolean gameOver;
-    private boolean highScore;
     private boolean running;
     private BorderPane borderPane;
-    private BorderPane gameOverCenter;
     private BorderPane pauseCenter;
     private double shadeThick;
     private GridPane tetrisGrid;
@@ -55,8 +54,6 @@ public class TetrisGame extends Application {
     private int shapeSpeed;
     private Label gameOverSub;
     private Label gameOverTitle;
-    private Label hiscoreLabel;
-    private Label instructions;
     private Label level;
     private Label line;
     private Label score;
@@ -76,7 +73,7 @@ public class TetrisGame extends Application {
     private Scene scene;
     private SequentialTransition shapeTransition;
     private StackPane stackPane;
-    private Stage stage;
+    private Text instructions;
     private VBox hiscoresBox;
     private VBox instructionsBox;
     private VBox menuBox;
@@ -155,9 +152,6 @@ public class TetrisGame extends Application {
             vBoxGameOver.getChildren().addAll(gameOverTitle, gameOverSub, backToMenu);
             vBoxGameOver.setAlignment(Pos.CENTER);
 
-            gameOverCenter = new BorderPane();
-            gameOverCenter.setCenter(vBoxGameOver);
-
             stackPane.getChildren().addAll(boardShade, vBoxGameOver);
             updateHighScores();
         }
@@ -165,57 +159,7 @@ public class TetrisGame extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        colors = new HashMap<Integer, Color>();
-        colors.put(1, Color.ORANGE);
-        colors.put(2, Color.CYAN);
-        colors.put(3, Color.PURPLE);
-        colors.put(4, Color.GREEN);
-        colors.put(5, Color.RED);
-        colors.put(6, Color.BLUE);
-        colors.put(7, Color.YELLOW);
-
-        tetrisGrid = new GridPane();
-
-        for (int i = 0; i < Board.WIDTH; i++) {
-            tetrisGrid.getColumnConstraints().add(new ColumnConstraints(PIXEL));
-        }
-
-        for (int i = 0; i < Board.HEIGHT; i++) {
-            tetrisGrid.getRowConstraints().add(new RowConstraints(PIXEL));
-        }
-
-        vBoxBottom = new VBox();
-
-        score = new Label();
-        level = new Label();
-        line = new Label();
-
-        subScore = new Label("pisteet");
-        subLevel = new Label("taso");
-        subLine = new Label("tuhotut rivit");
-
-        vBoxTop = new VBox();
-        vBoxTop.getChildren().addAll(score, subScore, level, subLevel, line, subLine);
-
-        spacePause = new Label("keskeytä painamalla välilyöntiä");
-        //spacePause.getStyleClass().add("pause");
-
-        vBoxBottom.getChildren().add(spacePause);
-
-        borderPane = new BorderPane();
-        borderPane.setTop(vBoxTop);
-        borderPane.setBottom(vBoxBottom);
-
-        stackPane = new StackPane();
-        stackPane.getChildren().add(tetrisGrid);
-
-        root = new HBox();
-        root.setPadding(new Insets(5.0));
-        root.setSpacing(25.0);
-        root.getChildren().addAll(borderPane, stackPane);
-
-        pauseCenter = new BorderPane();
-        pauseCenter.setPadding(new Insets(10, 20, 10, 20));
+        startGameSetup();
 
         Button continueButton = new Button("Jatka peliä");
         Button newGameButton = new Button("Uusi peli");
@@ -224,14 +168,15 @@ public class TetrisGame extends Application {
         Button exitGameButton = new Button("Lopeta Tetris");
 
         continueButton.setOnAction((event) -> {
-            running = true;
-            shapeTransition.play();
-            stackPane.getChildren().removeAll(boardShade, pauseCenter);
+            if (!gameOver) {
+                running = true;
+                shapeTransition.play();
+                stackPane.getChildren().removeAll(boardShade, pauseCenter);
+            }
         });
 
         newGameButton.setOnAction((event) -> {
             startNewGame();
-            // = true;
             shapeTransition.play();
             stackPane.getChildren().removeAll(boardShade, pauseCenter);
         });
@@ -239,12 +184,14 @@ public class TetrisGame extends Application {
         hiscoresBox = hiscores();
 
         hiscoresButton.setOnAction((event) -> {
+            stackPane.getChildren().remove(pauseCenter);
             stackPane.getChildren().add(hiscoresBox);
         });
 
         instructionsBox = instructions();
 
         instructionsButton.setOnAction((event) -> {
+            stackPane.getChildren().remove(pauseCenter);
             stackPane.getChildren().add(instructionsBox);
         });
 
@@ -267,11 +214,9 @@ public class TetrisGame extends Application {
         boardShade.toFront();
 
         scene = new Scene(root);
-        //scene.getStylesheets().add("file:resurssit/application.css");
         setControls();
 
         firstTry = true;
-        highScore = false;
 
         startNewGame();
 
@@ -341,8 +286,7 @@ public class TetrisGame extends Application {
     public void pauseGame() {
         if (gameOver) {
             shapeTransition.stop();
-            //startNewGame();
-            stackPane.getChildren().removeAll(gameOverCenter, vBoxGameOver);
+            stackPane.getChildren().remove(vBoxGameOver);
             stackPane.getChildren().add(pauseCenter);
         }
         if (running) {
@@ -365,46 +309,41 @@ public class TetrisGame extends Application {
 
         final String INSTRUCTIONS
                 = "TETRIS\n\n"
-                + "Pelissä on tavoitteena saada ylhäältä putoavat\n "
-                + "neljästä ruudusta muodostuvat palikat \n"
-                + "järjesteltyä siten, että ruudut täyttävät rivit kokonaan.\n"
-                + "Kun rivi tulee täyteen, se poistetaan ja sen\n"
-                + "yläpuolella olevat rivit putoavat alaspäin.\n"
-                + "Pelissä on käytössä vetovoima, jonka\n"
-                + "vaikutuksesta välittömästi poistetun rivin yläpuolella\n"
-                + "olevat ruudut putoavat niin alas kuin niillä on tilaa\n"
-                + "pudota. Pelissä saa pisteitä täyteen saaduista riveistä,\n"
-                + " lisäksi pisteitä saa sitä enemmän, mitä enemmän rivejä\n"
-                + "onnistuu saamaan kerralla täyteen. Peli päättyy, kun\n"
-                + "palikat eivät mahdu enää tippumaan ylimmältä riviltä\n"
-                + "alaspäin. Aina kymmenen täyteen saadun rivin jälkeen\n"
-                + "pelaaja pääsee seuraavalle tasolle, joka ilmenee\n"
-                + "palikoiden putoamisen nopeutumisena.\n\n"
-                + "Ylhäältä putoavia palikoita on mahdollista siirtää\n"
-                + "oikealle ja vasemmalle, niitä on mahdollista myös\n"
-                + "kääntää sekä nopeuttaa niiden putoamista. Nämä\n"
-                + "toimenpiteet voidaan toteuttaa vain silloin, kun\n"
-                + "niille on tilaa eli pelialueen reunat tai aiemmin\n"
-                + "tippuneet palikat eivät ole toimenpiteiden tiellä.\n"
+                + "Pelissä on tavoitteena saada ylhäältä \n"
+                + "putoavat palikat järjesteltyä siten, että\n"
+                + "ne täyttävät rivin kokonaan. Kun rivi\n"
+                + "täyttyy, se poistetaan ja sen yläpuolella\n"
+                + "olevat rivit putoavat alaspäin. Pelissä\n"
+                + "on käytössä vetovoima, jonka vaikutuksesta\n"
+                + "välittömästi poistetun rivin yläpuolella olevat\n"
+                + "ruudut putoavat niin alas kuin niillä on\n"
+                + "tilaa pudota. Pelissä saa pisteitä täyteen\n"
+                + "saaduista riveistä. Korkeammalla tasolla\n"
+                + "ja enemmän rivejä kerralla täyttämällä\n"
+                + "pisteitä saa nopeammin. Peli päättyy, kun\n"
+                + "pelattava palikka ei mahdu enää putoamaan\n"
+                + "ylimmältä riviltä alaspäin. Aina 10 täyteen\n"
+                + "saadun rivin jälkeen siirtyy seuraavalle\n"
+                + "tasolle, joka ilmenee palikoiden nopeampana\n"
+                + "putoamisena.\n\n"
+                + "Ylhäältä putoavia palikoita on mahdollista\n"
+                + "siirtää oikealle ja vasemmalle, niitä voi myös\n"
+                + "kääntää tai nopeuttaa niiden putoamista. Nämä\n"
+                + "toimenpiteet voidaan toteuttaa vain silloin,\n"
+                + "kun pelialueen reunat tai jo pelialueella\n"
+                + "olevat palikat eivät ole toimenpiteiden tiellä.\n"
                 + "Palikan ohjaamiseen käytettävät näppäimet ovat\n"
-                + "kirjaimet W, A, S ja D tai vaihtoehtoisesti\n"
-                + "nuolinäppäimet. Kaikki edellämainitut näppäimet\n"
-                + "ovat käytettävissä aina pelattaessa, joten niitä\n"
-                + "voidaan käyttää myös sekaisin. Nuoli ylös samoin\n"
-                + "kuin W-kirjain saa palikan kääntymään, nuoli vasemmalle\n"
-                + "ja A-kirjain palikan siirtymään vasemmalle, nuoli\n"
-                + "oikealle ja D-kirjain palikan siirtymään oikealle ja\n"
-                + "nuoli alas sekä S-kirjain nopeuttavat palikan\n"
-                + "putoamista. Peli voidaan keskeyttää painamalla\n"
-                + "välilyöntiä, jonka jälkeen avautuvasta valikosta\n"
-                + "voidaan joko jatkaa peliä, aloittaa uusi peli, \n"
-                + "tutustua parhaisiin tuloksiin tai ohjeisiin tai\n"
-                + "sulkea sovellus kokonaan. Peli jatkuu myös painamalla\n"
-                + "välilyöntiä uudestaan.";
+                + "kirjaimet W, A, S ja D tai nuolinäppäimet.\n"
+                + "Kaikki näitä näppäimiä voi käyttää aina\n"
+                + "pelattaessa.\n\n "
+                + "Nuoli ylös ja W:  Palikka kääntyy\n "
+                + "Nuoli vasemmalle ja A: palikka siirtyy vasemmalle\n"
+                + "Nuoli oikealle ja D: Palikka siirtyy oikealle\n"
+                + "Nuoli alas ja S: Palikka putoaa nopeammin\n"
+                + "Välilyönti: Peli keskeytyy ja valikko avautuu\n\n";
 
+        instructions = new Text(INSTRUCTIONS);
         Button backToMenu = backToMenuButton(vBox);
-
-        instructions = new Label(INSTRUCTIONS);
         vBox.getChildren().addAll(instructions, backToMenu);
 
         return vBox;
@@ -412,24 +351,22 @@ public class TetrisGame extends Application {
 
     private VBox hiscores() {
         VBox vBox = new VBox();
+        //vBox.getChildren().clear();
         vBox.setSpacing(10);
         vBox.setStyle("-fx-background-color: #f5f5f5");
-
+        Text text = new Text();
+        text.setText(null);
         HighScore[] highScores = HighScore.getHighScores();
-
-        String top10 = HighScore.hiscoreHeaderToString();
-
+        String top10 = "";
+        top10 = HighScore.hiscoreHeaderToString();
         for (int i = 0; i < highScores.length; i++) {
             top10 += HighScore.rightPad(String.valueOf(i + 1) + ".", 4) + highScores[i].toString();
 
         }
-
+        text.setText(top10);
+        text.setFont(Font.font("monospace", 12));
         Button backToMenu = backToMenuButton(vBox);
-        
-        hiscoreLabel = new Label(top10);
-        hiscoreLabel.setFont(Font.font("monospace", 12));
-        vBox.getChildren().addAll(hiscoreLabel, backToMenu);
-
+        vBox.getChildren().addAll(text, backToMenu);
         return vBox;
     }
 
@@ -493,5 +430,59 @@ public class TetrisGame extends Application {
             stackPane.getChildren().add(pauseCenter);
         });
         return backToMenu;
+    }
+
+    private void startGameSetup() {
+        colors = new HashMap<Integer, Color>();
+        colors.put(1, Color.ORANGE);
+        colors.put(2, Color.CYAN);
+        colors.put(3, Color.PURPLE);
+        colors.put(4, Color.GREEN);
+        colors.put(5, Color.RED);
+        colors.put(6, Color.BLUE);
+        colors.put(7, Color.YELLOW);
+
+        tetrisGrid = new GridPane();
+
+        for (int i = 0; i < Board.WIDTH; i++) {
+            tetrisGrid.getColumnConstraints().add(new ColumnConstraints(PIXEL));
+        }
+
+        for (int i = 0; i < Board.HEIGHT; i++) {
+            tetrisGrid.getRowConstraints().add(new RowConstraints(PIXEL));
+        }
+
+        vBoxBottom = new VBox();
+
+        score = new Label();
+        level = new Label();
+        line = new Label();
+
+        subScore = new Label("pisteet");
+        subLevel = new Label("taso");
+        subLine = new Label("tuhotut rivit");
+
+        vBoxTop = new VBox();
+        vBoxTop.getChildren().addAll(score, subScore, level, subLevel, line, subLine);
+
+        spacePause = new Label("keskeytä painamalla välilyöntiä");
+        //spacePause.getStyleClass().add("pause");
+
+        vBoxBottom.getChildren().add(spacePause);
+
+        borderPane = new BorderPane();
+        borderPane.setTop(vBoxTop);
+        borderPane.setBottom(vBoxBottom);
+
+        stackPane = new StackPane();
+        stackPane.getChildren().add(tetrisGrid);
+
+        root = new HBox();
+        root.setPadding(new Insets(5.0));
+        root.setSpacing(25.0);
+        root.getChildren().addAll(borderPane, stackPane);
+
+        pauseCenter = new BorderPane();
+        pauseCenter.setPadding(new Insets(10, 20, 10, 20));
     }
 }

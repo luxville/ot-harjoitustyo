@@ -110,6 +110,7 @@ public class HighScore implements Serializable {
         try {
             ObjectInputStream o = new ObjectInputStream(new FileInputStream("HighScores.dat"));
             HighScore[] highScores = (HighScore[]) o.readObject();
+            o.close();
             return highScores;
         } catch (IOException e) {
             e.printStackTrace();

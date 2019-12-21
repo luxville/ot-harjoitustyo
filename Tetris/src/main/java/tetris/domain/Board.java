@@ -172,7 +172,7 @@ public class Board {
      * @return totuusarvo siitä, onko tarkasteltavan pisteen oikealla puolella
      * pelialueen oikea reuna.
      */
-    private boolean closeToRightBorder() {
+    public boolean closeToRightBorder() {
         for (Point point : currentShape.getPoints()) {
             if (point.getX() == WIDTH - 1) {
                 return true;

@@ -10,7 +10,8 @@ import static org.junit.Assert.*;
 
 public class BoardTest {
 
-    Board board;
+    Board board2;
+    Board board4;
     Shape currentShape;
     Shape l;
     Shape i;
@@ -32,7 +33,8 @@ public class BoardTest {
 
     @Before
     public void setUp() {
-        board = new Board(4);
+        board2 = new Board(2);
+        board4 = new Board(4);
         l = new Shape(1);
         i = new Shape(2);
         t = new Shape(3);
@@ -55,17 +57,38 @@ public class BoardTest {
     }
 
     @Test
-    public void hasPointsDown() {
-        //board.createCurrentShape(4);
-        //currentShape = s;
+    public void closeToBottomAndCanRotateTest() {
+        board4 = new Board(4);
         for (int k = 0; k < 19; k++) {
-            board.moveDown();
+            board4.moveDown();
         }
-        assertTrue(board.canRotate());
-        assertFalse(board.closeToBottomBorder());
-        board.moveDown();
-        assertFalse(board.canRotate());
-        assertTrue(board.closeToBottomBorder());
-        board.moveDown();
+        assertTrue(board4.canRotate());
+        assertFalse(board4.closeToBottomBorder());
+        board4.moveDown();
+        assertFalse(board4.canRotate());
+        assertTrue(board4.closeToBottomBorder());
+        board4.moveDown();
+    }
+
+    @Test
+    public void moveAndCloseToSLeftBorderTest() {
+        board2 = new Board(2);
+        for (int k = 0; k < 3; k++) {
+            board2.moveLeft();
+        }
+        assertTrue(board2.closeToLeftBorder());
+        board2.moveRight();
+        assertFalse(board2.closeToLeftBorder());
+        /*assertFalse(board2.closeToRightBorder());
+        for (int k = 0; k < 5; k++) {
+            board2.moveRight();
+        }
+        assertTrue(board2.closeToRightBorder());
+        for (int k = 0; k < 18; k++) {
+            board2.moveDown();
+        }
+        board2.rotate();
+        board2.moveDown();
+        board2.moveDown();*/
     }
 }

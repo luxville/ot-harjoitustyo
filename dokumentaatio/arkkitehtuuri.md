@@ -68,3 +68,21 @@ Valikosta uuden pelin valitsemisen jälkeen sovellus aloittaa toimintansa seuraa
 <img src="https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/sekvenssikaavio1.png" width="480">
 
 Käyttöliittymä pyytää itseään aloittamaan uuden pelin, hakee pelilaudalta tiedon palikoiden putoamisnopeudesta, piirtää pelilaudan sekä aloittaa palikoiden pudottamisen ja jää sen jälkeen odottamaan käyttäjältä ohjeita, mitä kulloinkin putoamassa olevalle palikalle tehdään.
+
+### Muut toiminnallisuudet
+
+Ohjelmassa on paljon toiminnallisuuksia, joita olisi ollut hyvä avata enemmän sekvenssikaavioiden avulla. Todellisuus iski kuitenkin väliin ja ne jäivät toteuttamatta. Yleisenä periaatteena kuitenkin on, että ohjelman suoritus alkaa ja ajan kuluessa palikat putoilevat alaspäin odottaen käyttäjältä jonkinlaisia ohjeita, mitä palikoille tulisi tehdä. Mikäli rivi tulee täyteen, kutsutaan metodia, joka laskee kuinka moni rivi tulikaan kerralla täyteen ja antaa sen perusteella pisteitä sekä poistaa täyteen tulleet rivit pelialueelta. Kun toimenpiteet on saatu valmiiksi, jää ohjelma jälleen odottamaan käyttäjän ohjeita.
+
+Yksinkertaisempia tapauksia ovat näkymästä toiseen siirtymiset, joissa käytännössä kaikki toiminnallisuus on luotu valmiiksi jo ohjelman käynnistyksen yhteydessä.
+
+## Ohjelman rakenteeseen jääneet heikkoudet
+
+### Käyttöliittymä
+
+Käyttöliittymän toteutuksessa on mietitty vain vähän laadukasta metodirakennetta, joten se muodostuu monista pitkistä metodeista ja on muutenkin yhdessä luokassa toteutettuna melko kömpelö kehitettäväksi. 
+
+Näkymien toteutus samanlaisissa rakenteissa olisi helpottanut niiden käsittelyä.
+
+### Sovelluslogiikka
+
+Tiedon pysyväistallennus olisi kannattanut toteuttaa omassa pakkauksessaan, nyt se on hieman irrallinen osa kokonaisuutta ja tekee *HighScore*-luokasta sekavamman.

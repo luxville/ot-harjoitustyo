@@ -89,69 +89,55 @@ public class TetrisGame extends Application {
                 shapeTransition.stop();
                 createTransition();
             }
-
             score.setText(String.valueOf(board.getScore()));
             line.setText(String.valueOf(board.getNumClearedLines()));
             level.setText(String.valueOf(board.getLevel()));
             points = board.getPoints();
             tetrisGrid.getChildren().clear();
-
             for (int i = 0; i < Board.HEIGHT; i++) {
                 for (int j = 0; j < Board.WIDTH; j++) {
                     currentPoint = new Point(j, i);
                     cellGroup = new Group();
-
                     square = new Rectangle(PIXEL, PIXEL);
                     topShade = new Polygon();
                     bottomShade = new Polygon();
                     shadeThick = (double) PIXEL / 7.5;
-
                     if (points.contains(currentPoint)) {
                         setShades(true);
-
                         square.setFill(colors.get(points.get(points.indexOf(currentPoint)).getType()));
                         cellGroup.getChildren().addAll(square, topShade, bottomShade);
                     } else {
                         setShades(false);
-
                         topRec = new Rectangle(PIXEL, PIXEL / 2.65);
                         topRec.setOpacity(0.05);
                         topRec.setFill(Color.WHITE);
-
                         halfCircle = setHalfCircle();
-
                         square.setFill(Color.GRAY);
                         square.setOpacity((55.0 / 62.0 - ((double) i + 30.0) / ((double) Board.HEIGHT + 50.0)));
-
                         cellGroup.getChildren().addAll(square, topShade, bottomShade, halfCircle, topRec);
                     }
                     tetrisGrid.add(cellGroup, j, i);
                 }
-
             }
         } else {
             gameOver = true;
             running = false;
             setSceneDisable(true);
             shapeTransition.stop();
-
             gameOverTitle = new Label("PELI LOPPUI");
             gameOverTitle.setTextFill(Color.WHITE);
             gameOverTitle.setFont(Font.font("Segoe UI", FontWeight.BOLD, 15.0));
             gameOverTitle.setTextAlignment(TextAlignment.CENTER);
-
             gameOverSub = new Label("Pisteesi ovat " + board.getScore() + ",\n"
                     + "saavutit tason " + board.getLevel() + "\n"
                     + "tuhoamalla " + board.getNumClearedLines() + " riviä!");
             gameOverSub.setTextFill(Color.WHITE);
             gameOverSub.setFont(Font.font("Segoe UI Semilight", 13.0));
             gameOverSub.setTextAlignment(TextAlignment.CENTER);
-
             vBoxGameOver = new VBox();
             Button backToMenu = backToMenuButton(vBoxGameOver);
             vBoxGameOver.getChildren().addAll(gameOverTitle, gameOverSub, backToMenu);
             vBoxGameOver.setAlignment(Pos.CENTER);
-
             stackPane.getChildren().addAll(boardShade, vBoxGameOver);
             updateHighScores();
         }
@@ -160,13 +146,11 @@ public class TetrisGame extends Application {
     @Override
     public void start(Stage primaryStage) {
         startGameSetup();
-
         Button continueButton = new Button("Jatka peliä");
         Button newGameButton = new Button("Uusi peli");
         Button instructionsButton = new Button("Ohjeet");
         Button hiscoresButton = new Button("Parhaat tulokset");
         Button exitGameButton = new Button("Lopeta Tetris");
-
         continueButton.setOnAction((event) -> {
             if (!gameOver) {
                 running = true;
@@ -174,52 +158,39 @@ public class TetrisGame extends Application {
                 stackPane.getChildren().removeAll(boardShade, pauseCenter);
             }
         });
-
         newGameButton.setOnAction((event) -> {
             startNewGame();
             shapeTransition.play();
             stackPane.getChildren().removeAll(boardShade, pauseCenter);
         });
-
         hiscoresBox = hiscores();
-
         hiscoresButton.setOnAction((event) -> {
             stackPane.getChildren().remove(pauseCenter);
             stackPane.getChildren().add(hiscoresBox);
         });
-
         instructionsBox = instructions();
-
         instructionsButton.setOnAction((event) -> {
             stackPane.getChildren().remove(pauseCenter);
             stackPane.getChildren().add(instructionsBox);
         });
-
         exitGameButton.setOnAction((event) -> {
             Platform.exit();
             System.exit(0);
         });
-
         menuBox = new VBox();
         menuBox.setSpacing(10);
         menuBox.getChildren().addAll(continueButton, newGameButton,
                 hiscoresButton, instructionsButton, exitGameButton);
-
         pauseCenter.setCenter(menuBox);
-
         boardShade = new Rectangle(Board.WIDTH * PIXEL + 2 * (Board.WIDTH - 1),
                 Board.HEIGHT * PIXEL + 2 * (Board.HEIGHT - 1));
         boardShade.setOpacity(0.5);
         boardShade.setFill(Color.BLACK);
         boardShade.toFront();
-
         scene = new Scene(root);
         setControls();
-
         firstTry = true;
-
         startNewGame();
-
         primaryStage.setScene(scene);
         primaryStage.setTitle("TETRIS");
         primaryStage.show();
@@ -247,7 +218,6 @@ public class TetrisGame extends Application {
 
     public void createTransition() {
         shapeSpeed = board.getTimePerBlock();
-
         shapeTransition = new SequentialTransition();
         pauseTransition = new PauseTransition(Duration.millis(shapeSpeed));
         pauseTransition.setOnFinished(event -> {
@@ -274,7 +244,6 @@ public class TetrisGame extends Application {
         running = true;
         gameOver = false;
         shapeSpeed = board.getTimePerBlock();
-
         paint();
         createTransition();
         if (firstTry) {
@@ -306,7 +275,6 @@ public class TetrisGame extends Application {
         VBox vBox = new VBox();
         vBox.setSpacing(10);
         vBox.setStyle("-fx-background-color: #f5f5f5");
-
         final String INSTRUCTIONS
                 = "TETRIS\n\n"
                 + "Pelissä on tavoitteena saada ylhäältä \n"
@@ -345,7 +313,6 @@ public class TetrisGame extends Application {
         instructions = new Text(INSTRUCTIONS);
         Button backToMenu = backToMenuButton(vBox);
         vBox.getChildren().addAll(instructions, backToMenu);
-
         return vBox;
     }
 
@@ -359,7 +326,6 @@ public class TetrisGame extends Application {
         top10 = HighScore.hiscoreHeaderToString();
         for (int i = 0; i < highScores.length; i++) {
             top10 += HighScore.rightPad(String.valueOf(i + 1) + ".", 4) + highScores[i].toString();
-
         }
         top10 += HighScore.hiscoreAttention();
         text.setText(top10);
@@ -391,7 +357,6 @@ public class TetrisGame extends Application {
         halfCircle.setFill(Color.WHITE);
         halfCircle.setType(ArcType.ROUND);
         halfCircle.setRotate(180.0);
-
         return halfCircle;
     }
 
@@ -407,7 +372,6 @@ public class TetrisGame extends Application {
             bottomShade.setOpacity(0.25);
             bottomShade.setFill(Color.BLACK);
         }
-
         topShade.getPoints().addAll(new Double[]{
             0.0, 0.0, (double) PIXEL, 0.0, (double) PIXEL - shadeThick,
             shadeThick, shadeThick, shadeThick, shadeThick,
@@ -440,48 +404,38 @@ public class TetrisGame extends Application {
         colors.put(5, Color.RED);
         colors.put(6, Color.BLUE);
         colors.put(7, Color.YELLOW);
-
         tetrisGrid = new GridPane();
-
         for (int i = 0; i < Board.WIDTH; i++) {
             tetrisGrid.getColumnConstraints().add(new ColumnConstraints(PIXEL));
         }
-
         for (int i = 0; i < Board.HEIGHT; i++) {
             tetrisGrid.getRowConstraints().add(new RowConstraints(PIXEL));
         }
-
         vBoxBottom = new VBox();
-
         score = new Label();
         level = new Label();
         line = new Label();
-
         subScore = new Label("pisteet");
         subLevel = new Label("taso");
         subLine = new Label("tuhotut rivit");
-
         vBoxTop = new VBox();
         vBoxTop.getChildren().addAll(score, subScore, level, subLevel, line, subLine);
-
         spacePause = new Label("keskeytä painamalla välilyöntiä");
-        //spacePause.getStyleClass().add("pause");
-
         vBoxBottom.getChildren().add(spacePause);
-
         borderPane = new BorderPane();
         borderPane.setTop(vBoxTop);
         borderPane.setBottom(vBoxBottom);
-
         stackPane = new StackPane();
         stackPane.getChildren().add(tetrisGrid);
-
         root = new HBox();
         root.setPadding(new Insets(5.0));
         root.setSpacing(25.0);
         root.getChildren().addAll(borderPane, stackPane);
-
         pauseCenter = new BorderPane();
         pauseCenter.setPadding(new Insets(10, 20, 10, 20));
     }
+    
+    /*public static void main(String[] args) {
+        launch(args);
+    }*/
 }

@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa tiedosto [tetris.jar](https://github.com/luxville/ot-harjoitustyo/releases/tag/tetris_vk6/tetris.jar).
+Lataa tiedosto [tetris.jar](https://github.com/luxville/ot-harjoitustyo/releases/tag/tetris_vk6/tetris.jar). Ohjelma luo tiedoston *HighScores.dat* parhaiden tulosten listaa varten samaan kansioon, josta ohjelma suoritetaan, mikäli tiedostoa ei ennestään ole olemassa.
 
 ## Ohjelman käynnistäminen
 

@@ -39,17 +39,17 @@ Toiminnallisia kokonaisuuksia esiintyy monella tasolla. Luokka *Point* käsittel
 - void moveLeft()
 - List<Point> getRotatedPoints()
   
-  *Board*-luokassa luodaan pelialue ja hallinnoidaan siinä tapahtuvia toimintoja. *Board*-olio ylläpitää muunmuassa tietoa pelin päättymisestä, pelin kannalta olennaisista tiedoista pisteisiin, riveihin ja tasoon liittyen sekä pelialueella olevista *Point*-olioista ja niiden sijainneista. Näitä käsitteleviä metodeja ovat esimerkiksi
-  - boolean closeTotopBorder()
-  - int calculateCurrentScore(int num)
-  - void updateSpeed()
-  - List<Point> getPoints()
-  - boolean hasPointsDown()
-  - boolean canRotate()
+*Board*-luokassa luodaan pelialue ja hallinnoidaan siinä tapahtuvia toimintoja. *Board*-olio ylläpitää muunmuassa tietoa pelin päättymisestä, pelin kannalta olennaisista tiedoista pisteisiin, riveihin ja tasoon liittyen sekä pelialueella olevista *Point*-olioista ja niiden sijainneista. Näitä käsitteleviä metodeja ovat esimerkiksi
+- boolean closeTotopBorder()
+- int calculateCurrentScore(int num)
+- void updateSpeed()
+- List<Point> getPoints()
+- boolean hasPointsDown()
+- boolean canRotate()
   
-  Luokan *Board* ja muun sovelluslogiikan suhdetta kuvaa seuraava luokka/pakkauskaavio:
+Luokan *Board* ja muun sovelluslogiikan suhdetta kuvaa seuraava luokka/pakkauskaavio:
   
-  <img src="https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/luokka_pakkauskaavio.png" width="480">
+<img src="https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/luokka_pakkauskaavio.png" width="480">
   
 ## Tietojen pysyväistallennus
 

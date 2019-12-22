@@ -18,7 +18,7 @@ Sovelluksessa käyttäjän tarkoituksena on järjestellä ruudun ylälaidasta pu
 
 ## Julkaisut
 
-[Loppupalautus]()
+[Loppupalautus](https://github.com/luxville/ot-harjoitustyo/releases/tag/Loppupalautus)
 
 [Viikko 6](https://github.com/luxville/ot-harjoitustyo/releases/tag/tetris_vk6)
 

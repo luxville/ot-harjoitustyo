@@ -12,7 +12,7 @@ Automatisoidut testit muodostuvat pakkauksen [tetris.domain](https://github.com/
 
 ### Testikattavuus
 
-Testikattavuudessa pyrittiin vaadittuun noin 70 prosenttiin. Rivikattavuus on 79% ja haaraumakattavuus 65%.
+Testikattavuudessa pyrittiin vaadittuun noin 70 prosenttiin. Rivikattavuus on 78% ja haaraumakattavuus 63%.
 
 <img src="https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/testikattavuus.png" width="800">
 

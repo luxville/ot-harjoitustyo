@@ -21,9 +21,6 @@ public class HighScoreTest {
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
 
-//    @Rule
-//    public ExpectedException thrown = ExpectedException.none();
-
     @Before
     public void setUp() throws IOException {
         highScore = new HighScore(3, 13, 1000, "testplayer");

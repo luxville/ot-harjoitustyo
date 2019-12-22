@@ -86,3 +86,5 @@ Näkymien toteutus samanlaisissa rakenteissa olisi helpottanut niiden käsittely
 ### Sovelluslogiikka
 
 Tiedon pysyväistallennus olisi kannattanut toteuttaa omassa pakkauksessaan, nyt se on hieman irrallinen osa kokonaisuutta ja tekee *HighScore*-luokasta sekavamman.
+
+Luokka *Board* on turhan pitkä ja jaettu osittain teennäisesti lyhyempiin metodeihin. Paremmalla suunnittelulla tämä olisi hyvä toteuttaa useampaan luokkaan jaettuna.

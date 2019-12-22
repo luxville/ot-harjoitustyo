@@ -10,15 +10,19 @@ Sovelluksessa käyttäjän tarkoituksena on järjestellä ruudun ylälaidasta pu
 
 [Vaatimusmäärittely](https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
-[Työaikakirjanpito](https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
-
 [Arkkitehtuurikuvaus](https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
+[Testausdokumentti](https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/testaus.md)
+
+[Työaikakirjanpito](https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 ## Julkaisut
 
-[Viikko 5](https://github.com/luxville/ot-harjoitustyo/releases/tag/tetris_vk5)
+[Loppupalautus]()
 
 [Viikko 6](https://github.com/luxville/ot-harjoitustyo/releases/tag/tetris_vk6)
+
+[Viikko 5](https://github.com/luxville/ot-harjoitustyo/releases/tag/tetris_vk5)
 
 ## Komentorivitoiminnot
 

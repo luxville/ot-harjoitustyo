@@ -1,19 +1,12 @@
 package tetris.domain;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
-import java.util.Arrays;
-import junit.framework.Assert;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Rule;
@@ -24,13 +17,12 @@ public class HighScoreTest {
 
     HighScore highScore;
     HighScore[] highScores;
-    //Path myTempFolder;
 
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+//    @Rule
+//    public ExpectedException thrown = ExpectedException.none();
 
     @Before
     public void setUp() throws IOException {
@@ -91,7 +83,7 @@ public class HighScoreTest {
             copy.delete();
         }
     }
-    
+
     @Test
     public void hiscoreHeader() {
         assertEquals("TOP 10\n\n           NIMI  PISTEET  TASO  RIVIT \n\n",

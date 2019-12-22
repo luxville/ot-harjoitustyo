@@ -47,7 +47,7 @@ public class Board {
         this.rand = new Random();
         createCurrentShape();
     }
-    
+
     public Board(int num) {
         this.gameOver = false;
         this.numClearedLines = 0;
@@ -205,7 +205,7 @@ public class Board {
      * varattujen ruutujen sitä estämättä.
      */
     public boolean canRotate() {
-        List<Point> rotated = currentShape.getRotatePoints();
+        List<Point> rotated = currentShape.getRotatedPoints();
         for (Point point : rotated) {
             if (point.getX() >= WIDTH || point.getY() >= HEIGHT || point.getX() < 0
                     || points.contains(point)) {
@@ -355,7 +355,7 @@ public class Board {
     public int getLevel() {
         return level;
     }
-    
+
     public void setLevel(int level) {
         this.level = level;
     }

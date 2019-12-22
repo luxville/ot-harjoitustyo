@@ -87,7 +87,6 @@ public class HighScore implements Serializable {
             new HighScore(0, 0, 0, " "), new HighScore(0, 0, 0, " "), new HighScore(0, 0, 0, " "),
             new HighScore(0, 0, 0, " "), new HighScore(0, 0, 0, " "), new HighScore(0, 0, 0, " "),
             new HighScore(0, 0, 0, " "), new HighScore(0, 0, 0, " ")};
-
         try {
             ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(filename));
             o.writeObject(highScores);
@@ -165,7 +164,6 @@ public class HighScore implements Serializable {
         String scoreString = rightPad(String.valueOf(score), 8);
         String levelString = rightPad(String.valueOf(level), 5);
         String linesString = rightPad(String.valueOf(lines), 6);
-
         return name + scoreString + levelString + linesString + "\n";
     }
 
@@ -177,7 +175,6 @@ public class HighScore implements Serializable {
     public static String hiscoreHeaderToString() {
         String hiscoresHeader = "TOP 10\n\n" + rightPad(" ", 4) + rightPad("NIMI", 10) + rightPad("PISTEET", 8)
                 + rightPad("TASO", 5) + rightPad("RIVIT", 6) + "\n\n";
-
         return hiscoresHeader;
     }
 

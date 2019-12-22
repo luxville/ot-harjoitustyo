@@ -47,6 +47,11 @@ public class TetrisGame extends Application {
     private boolean running;
     private BorderPane borderPane;
     private BorderPane pauseCenter;
+    Button continueButton;
+    Button newGameButton;
+    Button instructionsButton;
+    Button hiscoresButton;
+    Button exitGameButton;
     private double shadeThick;
     private GridPane tetrisGrid;
     private Group cellGroup;
@@ -146,37 +151,7 @@ public class TetrisGame extends Application {
     @Override
     public void start(Stage primaryStage) {
         startGameSetup();
-        Button continueButton = new Button("Jatka peliä");
-        Button newGameButton = new Button("Uusi peli");
-        Button instructionsButton = new Button("Ohjeet");
-        Button hiscoresButton = new Button("Parhaat tulokset");
-        Button exitGameButton = new Button("Lopeta Tetris");
-        continueButton.setOnAction((event) -> {
-            if (!gameOver) {
-                running = true;
-                shapeTransition.play();
-                stackPane.getChildren().removeAll(boardShade, pauseCenter);
-            }
-        });
-        newGameButton.setOnAction((event) -> {
-            startNewGame();
-            shapeTransition.play();
-            stackPane.getChildren().removeAll(boardShade, pauseCenter);
-        });
-        hiscoresBox = hiscores();
-        hiscoresButton.setOnAction((event) -> {
-            stackPane.getChildren().remove(pauseCenter);
-            stackPane.getChildren().add(hiscoresBox);
-        });
-        instructionsBox = instructions();
-        instructionsButton.setOnAction((event) -> {
-            stackPane.getChildren().remove(pauseCenter);
-            stackPane.getChildren().add(instructionsBox);
-        });
-        exitGameButton.setOnAction((event) -> {
-            Platform.exit();
-            System.exit(0);
-        });
+        buttonsSetup();
         menuBox = new VBox();
         menuBox.setSpacing(10);
         menuBox.getChildren().addAll(continueButton, newGameButton,
@@ -309,7 +284,6 @@ public class TetrisGame extends Application {
                 + "Nuoli oikealle ja D: Palikka siirtyy oikealle\n"
                 + "Nuoli alas ja S: Palikka putoaa nopeammin\n"
                 + "Välilyönti: Peli keskeytyy ja valikko avautuu\n\n";
-
         instructions = new Text(INSTRUCTIONS);
         Button backToMenu = backToMenuButton(vBox);
         vBox.getChildren().addAll(instructions, backToMenu);
@@ -320,7 +294,6 @@ public class TetrisGame extends Application {
         VBox vBox = new VBox();
         vBox.setSpacing(10);
         vBox.setStyle("-fx-background-color: #f5f5f5");
-        Text text = new Text();
         HighScore[] highScores = HighScore.getHighScores();
         String top10 = "";
         top10 = HighScore.hiscoreHeaderToString();
@@ -328,6 +301,7 @@ public class TetrisGame extends Application {
             top10 += HighScore.rightPad(String.valueOf(i + 1) + ".", 4) + highScores[i].toString();
         }
         top10 += HighScore.hiscoreAttention();
+        Text text = new Text();
         text.setText(top10);
         text.setFont(Font.font("monospace", 12));
         Button backToMenu = backToMenuButton(vBox);
@@ -351,7 +325,7 @@ public class TetrisGame extends Application {
     }
 
     private Arc setHalfCircle() {
-        Arc halfCircle = new Arc((double) PIXEL / 2.0, (double) PIXEL / 2.0,
+        halfCircle = new Arc((double) PIXEL / 2.0, (double) PIXEL / 2.0,
                 (double) PIXEL / 2.0, (double) PIXEL / 8.0, 0.0f, 180.0f);
         halfCircle.setOpacity(0.05);
         halfCircle.setFill(Color.WHITE);
@@ -396,7 +370,7 @@ public class TetrisGame extends Application {
     }
 
     private void startGameSetup() {
-        colors = new HashMap<Integer, Color>();
+        colors = new HashMap();
         colors.put(1, Color.ORANGE);
         colors.put(2, Color.CYAN);
         colors.put(3, Color.PURPLE);
@@ -411,17 +385,7 @@ public class TetrisGame extends Application {
         for (int i = 0; i < Board.HEIGHT; i++) {
             tetrisGrid.getRowConstraints().add(new RowConstraints(PIXEL));
         }
-        vBoxBottom = new VBox();
-        score = new Label();
-        level = new Label();
-        line = new Label();
-        subScore = new Label("pisteet");
-        subLevel = new Label("taso");
-        subLine = new Label("tuhotut rivit");
-        vBoxTop = new VBox();
-        vBoxTop.getChildren().addAll(score, subScore, level, subLevel, line, subLine);
-        spacePause = new Label("keskeytä painamalla välilyöntiä");
-        vBoxBottom.getChildren().add(spacePause);
+        sidePanelSetup();
         borderPane = new BorderPane();
         borderPane.setTop(vBoxTop);
         borderPane.setBottom(vBoxBottom);
@@ -434,8 +398,52 @@ public class TetrisGame extends Application {
         pauseCenter = new BorderPane();
         pauseCenter.setPadding(new Insets(10, 20, 10, 20));
     }
-    
-    /*public static void main(String[] args) {
-        launch(args);
-    }*/
+
+    private void buttonsSetup() {
+        continueButton = new Button("Jatka peliä");
+        newGameButton = new Button("Uusi peli");
+        instructionsButton = new Button("Ohjeet");
+        hiscoresButton = new Button("Parhaat tulokset");
+        exitGameButton = new Button("Lopeta Tetris");
+        continueButton.setOnAction((event) -> {
+            if (!gameOver) {
+                running = true;
+                shapeTransition.play();
+                stackPane.getChildren().removeAll(boardShade, pauseCenter);
+            }
+        });
+        newGameButton.setOnAction((event) -> {
+            startNewGame();
+            shapeTransition.play();
+            stackPane.getChildren().removeAll(boardShade, pauseCenter);
+        });
+        hiscoresBox = hiscores();
+        hiscoresButton.setOnAction((event) -> {
+            stackPane.getChildren().remove(pauseCenter);
+            stackPane.getChildren().add(hiscoresBox);
+        });
+        instructionsBox = instructions();
+        instructionsButton.setOnAction((event) -> {
+            stackPane.getChildren().remove(pauseCenter);
+            stackPane.getChildren().add(instructionsBox);
+        });
+        exitGameButton.setOnAction((event) -> {
+            Platform.exit();
+            System.exit(0);
+        });
+    }
+
+    private void sidePanelSetup() {
+        vBoxBottom = new VBox();
+        score = new Label();
+        level = new Label();
+        line = new Label();
+        subScore = new Label("pisteet");
+        subLevel = new Label("taso");
+        subLine = new Label("tuhotut rivit");
+        vBoxTop = new VBox();
+        vBoxTop.getChildren().addAll(subScore, score, subLevel, level, subLine, line);
+        spacePause = new Label("keskeytä painamalla välilyöntiä");
+        vBoxBottom.getChildren().add(spacePause);
+    }
 }

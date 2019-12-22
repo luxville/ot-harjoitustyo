@@ -18,7 +18,6 @@ public class Shape {
         this.type = num;
         this.rotation = 0;
         this.points = new ArrayList<Point>();
-
         createPoints();
     }
 
@@ -64,7 +63,7 @@ public class Shape {
     public int getRotation() {
         return this.rotation;
     }
-    
+
     /**
      * Siirtää palikkaa vasemmalle.
      */
@@ -100,7 +99,7 @@ public class Shape {
                 }
             }
             if (type == 2) {
-                rotateType2();
+                rotateTypeI();
             } else {
                 rotateOtherTypes();
             }
@@ -113,7 +112,7 @@ public class Shape {
      *
      * @return lista palikan pisteistä sen kääntämisen jälkeen
      */
-    public List<Point> getRotatePoints() {
+    public List<Point> getRotatedPoints() {
         Shape rotated = new Shape(this);
 
         rotated.rotate();
@@ -147,7 +146,7 @@ public class Shape {
     /**
      * Kääntää tyypin 2 eli I-palikkaa.
      */
-    private void rotateType2() {
+    private void rotateTypeI() {
         for (Point point : points) {
             if (rotation == 0) {
                 point.setLocation(point.getY() - lowY + lowX + 2, point.getX() - lowX + lowY - 1);

@@ -361,6 +361,7 @@ public class TetrisGame extends Application {
             top10 += HighScore.rightPad(String.valueOf(i + 1) + ".", 4) + highScores[i].toString();
 
         }
+        top10 += HighScore.hiscoreAttention();
         text.setText(top10);
         text.setFont(Font.font("monospace", 12));
         Button backToMenu = backToMenuButton(vBox);

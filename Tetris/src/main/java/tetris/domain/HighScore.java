@@ -198,4 +198,18 @@ public class HighScore implements Serializable {
         return String.format("%" + length + "s", string) + " ";
     }
 
+    /**
+     * Huomauttaa tuloslistaa katsovalle, että tuloslista ei mahdollisesti ole
+     * täysin ajan tasalla.
+     *
+     * @return merkkijono, ilmoitus näkyvillä olevan tuloslistan päivitykseen
+     * liittyvästä viiveestä
+     */
+    public static String hiscoreAttention() {
+        return "\n\nHuomio! Tuloslista on päivitetty viimeksi\n"
+                + "ohjelman käynnistämisen yhteydessä eikä se\n"
+                + "välttämättä pidä enää paikkaansa.\n"
+                + "Päivittääksesi tuloslistan käynnistä\n"
+                + "ohjelma uudelleen.";
+    }
 }

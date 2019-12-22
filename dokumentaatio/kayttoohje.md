@@ -8,7 +8,7 @@ Ohjelma käynnistetään komennolla
 
 <code>java -jar tetris.jar</code>
 
-Tämän jälkeen näytölle avautuu aloitusnäkymänä valikko, josta voi valita seuraavat toiminnot.
+Tämän jälkeen näytölle avautuu aloitusnäkymänä valikko, josta voi valita seuraavat toiminnot. Nappeja painetaan hiirellä, mutta pelitilassa ohjaus onnistuu ainoastaan näppäimistöä käyttämällä.
 
 <img src="https://github.com/luxville/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/valikko.png">
 

@@ -23,4 +23,5 @@
 | 19.12. | 6    | Checkstyle kuntoon ja JavaDoc valmiiksi |
 | 20.12. | 6    | Virheellisen koodin paikantamista ja korjailua |
 | 21.12. | 10   | Testien rakentelemista |
-| Yht.   | 76   |
+| 22.12. | 10.  | Testidokumentti, arkkitehtuurikuvaus ja loppupalautus |
+| Yht.   | 86   |
